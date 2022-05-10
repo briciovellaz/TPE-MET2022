@@ -7,3 +7,4 @@ Criterio de done:
 -Debe ser testeado por una persona diferente a la que lo implementó
 -Tiene que tener trazabilidad de su paso de user story a codigo
 -Agregar documentos, diagramas, etc.
+-Cumplir con las politicas de github para pasar al branch principal (tiene que ser estable, funcional y haber pasado todos los test)

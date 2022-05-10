@@ -1,0 +1,10 @@
+Criterio de done:
+-Debe cumplir con los criterios de aceptación 
+-Si es código orientado a objetos entregar el diagrama de clases
+-Testear las funciones principales con parámetros comunes por lo menos una vez y agregar como comentario los resultados del test al inicio de lo entregado
+-En caso de código incluir una breve descripción al inicio sobre lo que hace y una breve descripción de la funcionalidad que hace cada función
+-Asegurarse de que sea subido correctamente a github con su breve descripción correspondiente
+-Debe ser testeado por una persona diferente a la que lo implementó
+-Tiene que tener trazabilidad de su paso de user story a codigo
+-Agregar documentos, diagramas, etc.
+-Cumplir con las politicas de github para pasar al branch principal (tiene que ser estable, funcional y haber pasado todos los test)

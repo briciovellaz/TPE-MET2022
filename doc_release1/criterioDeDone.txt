@@ -1,0 +1,7 @@
+Criterio de done:
+-Debe cumplir con los criterios de aceptación 
+-Si es código orientado a objetos entregar el diagrama de clases
+-Testear las funciones principales con parámetros comunes por lo menos una vez y agregar como comentario los resultados del test al inicio de lo entregado
+-En caso de código incluir una breve descripción al inicio sobre lo que hace y una breve descripción de la funcionalidad que hace cada función
+-Asegurarse de que sea subido correctamente a github con su breve descripción correspondiente
+-

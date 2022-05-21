@@ -3,7 +3,7 @@ package com.company;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Turno {
+public class Turno{
     private Paciente paciente;
     private Medico medico;
     private LocalDate fecha;
@@ -13,4 +13,13 @@ public class Turno {
     public boolean estaLibre(){
         return (paciente == null);
     }
+
+    public Turno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
+        this.paciente = paciente;
+        this.medico = medico;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+    }
+
 }

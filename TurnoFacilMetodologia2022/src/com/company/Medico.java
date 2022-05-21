@@ -22,7 +22,16 @@ public class Medico extends Profesional{
         return semana[dia];
     }
 
-    public void borrarHorario(int dia,int indice){
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void borrarHorario(int dia, int indice){
         semana[dia].remove(indice);
+    }
+
+    public Medico(String nombre, String especialidad, String contrasenia,int dni) {
+        super(nombre, contrasenia,dni);
+        this.especialidad = especialidad;
     }
 }

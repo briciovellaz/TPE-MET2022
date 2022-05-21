@@ -1,22 +1,20 @@
 package com.company;
 
-import jdk.internal.util.xml.impl.Pair;
-
 public abstract class Profesional {
     private String nombre,contraseña; //DNI se usara como idenficador de usuario
     private int DNI;
     //consulta DNI si es igual devuelve true
     public boolean validarDNI(int DNI){
-        if(DNI == this.DNI){
-            return true;
-        }
-        return false;
+        return (DNI == this.DNI);
     }
     //consulta pass si es igual devuelve true
-    public boolean validarContraseña(String Contraseña){
-        if(contraseña == this.contraseña){
-            return true;
-        }
-        return false;
+    public boolean validarContrasenia(String contrasenia){
+        return contrasenia.equals(this.contrasenia);
+    }
+
+    public Profesional(String nombre, String contrasenia, int dni){
+        this.nombre=nombre;
+        this.contrasenia=contrasenia;
+        this.DNI=dni;
     }
 }

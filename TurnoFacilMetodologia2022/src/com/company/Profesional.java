@@ -1,7 +1,7 @@
 package com.company;
 
 public abstract class Profesional {
-    private String nombre,contraseña; //DNI se usara como idenficador de usuario
+    private String nombre,contrasenia; //DNI se usara como idenficador de usuario
     private int DNI;
     //consulta DNI si es igual devuelve true
     public boolean validarDNI(int DNI){

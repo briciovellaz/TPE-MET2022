@@ -6,8 +6,8 @@ public class Responsable extends Profesional{
         super(nombre,contrasenia,dni);
     }
 
-    public void cargarMedico(String nombre,String especialidad,String contrasenia,int dni){
-        Medico m=new Medico(nombre,especialidad,contrasenia,dni);
+    public void cargarMedico(String nombre,String especialidad,String contrasenia,int dni,String matricula){
+        Medico m=new Medico(nombre,especialidad,contrasenia,dni,matricula);
     }
 
     public void cargarSecretaria(String nombre, String contrasenia,int dni){

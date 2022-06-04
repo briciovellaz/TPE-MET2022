@@ -1,5 +1,6 @@
 package com.company;
 
+import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
 import jdk.internal.util.xml.impl.Pair;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class Medico extends Profesional{
-    private String especialidad;
+    private String especialidad,matricula;
     private ArrayList<String> obrasSociales;
     private ArrayList<Horario> horarios[] = new ArrayList[7]; // 0 = lunes
 
@@ -60,8 +61,23 @@ public class Medico extends Profesional{
         }
     }
 
-    public Medico(String nombre, String especialidad, String contrasenia,int dni) {
+    public Medico(String nombre, String especialidad, String contrasenia,int dni, String matricula) {
         super(nombre, contrasenia,dni);
         this.especialidad = especialidad;
+        this.matricula=matricula;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        try{
+            return this.getMatricula().equals(((Medico)obj).getMatricula());
+        }
+        catch (Exception e){
+            return false;
+        }
     }
 }

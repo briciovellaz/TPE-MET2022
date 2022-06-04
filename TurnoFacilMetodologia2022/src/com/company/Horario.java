@@ -8,6 +8,7 @@ public class Horario {
     private LocalTime horaInic,horaFin;
     private int duracion;
     private ArrayList<Turno> turnos = new ArrayList<>();
+
     Horario(LocalTime horaInic,LocalTime horaFin,int duracion){
         this.horaInic = horaInic;
         this.horaFin = horaFin;
@@ -47,7 +48,7 @@ public class Horario {
     public boolean agregarTurno(Turno turno){ //agrega un turno
         if(turno.getHoraInicio().isBefore(horaFin) && turno.getHoraFin().isAfter(horaInic)){
             turnos.add(turno);
-            return true;
+
         }
         return false;
     }

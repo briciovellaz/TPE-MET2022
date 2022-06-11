@@ -21,6 +21,10 @@ public class Medico extends Profesional{
        horarios[dia].add(horario);
     }
 
+    public ArrayList<String> getObrasSociales() {
+        return obrasSociales;
+    }
+
     // dado una fecha busca en el dia de la semana los horarios y busca si ese horario en esa fecha esta libre en caso de estar libre lo agrega
     // a la lista que contiene las horas de inicio de los turno libres en dicha fecha
     public ArrayList<LocalTime> TurnosDisponibles(LocalDate dia){

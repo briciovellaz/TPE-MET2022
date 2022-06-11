@@ -22,6 +22,10 @@ public class Turno{
         this.horaFin = horaFin;
     }
 
+    public void liberarTurno(){
+        this.paciente=null;
+    }
+
     public Paciente getPaciente() {
         return paciente;
     }

@@ -52,4 +52,13 @@ public class Horario {
         }
         return false;
     }
-}
+
+    public void liberarTurno(Turno t){ // no se si esta bien
+        for (Turno turno : turnos) {//recorre la lista de todos los turnos del medico
+            if (turno.getFecha().isEqual(t.getFecha()) && turno.getHoraInicio().equals(t.getHoraInicio())) {//pregunta si existe otro turno con misma fecha y horario
+                turno.liberarTurno();
+            }
+        }
+        }
+    }
+

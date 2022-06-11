@@ -43,6 +43,14 @@ public class Medico extends Profesional{
         return false;
     }
 
+    public void liberarTurno(Turno t){
+        for(Horario horario : horarios[t.getFecha().getDayOfWeek().getValue()]){
+            if((t.getHoraInicio() == horario.getHoraInic()) && (t.getHoraFin() == horario.getHoraFin())){
+                horario.liberarTurno(t);
+            }
+        }
+    }
+
     public ArrayList<Turno> listarTurnos(int dia){//lista todos los turnos de un dia
         ArrayList<Turno> turnos = new ArrayList<>();
         for(Horario horario: horarios[dia] ){

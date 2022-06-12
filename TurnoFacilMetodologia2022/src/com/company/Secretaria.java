@@ -35,27 +35,33 @@ public class Secretaria extends Profesional{
             }
         }
     }
-
-    public void cargarTurno(Medico m, Turno t){
+    //public void cargarTurno(Medico m, Turno t) ::: les puse el mismo nombre ya que hacen lo mismo
+    public void asignarTurno(Medico m, Turno t){
         int i=0;
         while(i< medicos.size()&&!medicos.get(i).equals(m)){i++;}
         medicos.get(i).agregarTurno(t);
     }
 
+
     public void asignarTurno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin){
-        cargarTurno(medico, new Turno(paciente, medico, fecha, horaInicio, horaFin));
+        asignarTurno(medico, new Turno(paciente, medico, fecha, horaInicio, horaFin));
     }
-    /*
+
     public boolean existeTurno(Turno t){
-
+        Medico m=t.getMedico();
+        int i=0;
+        while( i<medicos.size() && !(medicos.get(i).equals(m)) ){i++;} // busco el medico
+        if (i<medicos.size())
+            return m.existeTurno(t);   // si existia delego al medico
+        return false;
     }
 
-    public void reasignarTurno(Turno t){
+    public void reasignarTurno(Turno t,Turno nuevo_turno){//LocalDate fecha,LocalTime hora_inicio,LocalTime hora_fin){
         if(existeTurno(t)){
             cancelarTurno(t);
-            asignarTurno();
+            asignarTurno(t.getMedico(),nuevo_turno);
         }
-    } */
+    }
 
     public void cancelarTurno(Turno t){
         t.getMedico().liberarTurno(t);

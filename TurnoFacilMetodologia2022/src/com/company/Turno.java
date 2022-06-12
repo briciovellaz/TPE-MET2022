@@ -45,4 +45,18 @@ public class Turno{
     public LocalTime getHoraFin() {
         return horaFin;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        try{
+            return (   this.getMedico().equals(((Turno)obj).getMedico())
+                    && this.getFecha().equals(((Turno)obj).getFecha())
+                    && this.getHoraInicio().equals(((Turno)obj).getHoraInicio())
+                    && this.getHoraFin().equals(((Turno)obj).getHoraFin())
+                    && this.getPaciente().equals(((Turno)obj).getPaciente())  );
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
 }

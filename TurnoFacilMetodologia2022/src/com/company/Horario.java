@@ -45,10 +45,15 @@ public class Horario {
         return turnos;
     }//devuelve lista de turnos
 
+
+    public boolean existeTurno(Turno t){
+        return turnos.contains(t);
+
+    }
     public boolean agregarTurno(Turno turno){ //agrega un turno
         if(turno.getHoraInicio().isBefore(horaFin) && turno.getHoraFin().isAfter(horaInic)){
             turnos.add(turno);
-
+            return true;
         }
         return false;
     }
@@ -60,5 +65,29 @@ public class Horario {
             }
         }
         }
+
+    private Turno getTurno(int index){ // rompe encapsulamiento ??
+        return turnos.get(index);
     }
+    @Override
+    public boolean equals(Object o){
+        if(        this.getDuracion() == ((Horario)o).getDuracion()
+                && this.getHoraFin().equals(((Horario)o).getHoraFin())
+                && this.getHoraInic().equals(((Horario)o).getHoraInic()) ){
+            int i=0;
+            while( i<turnos.size()) {// compara los turnos de este horario con los del otro sean iguales
+                if (!this.turnos.get(i).equals(((Horario) o).getTurno(i))) // Los arr deben estar ordenados :: si el turno en la pos i es igual al del otro horario en la misma posicion seran iguales
+                    return false;
+                i++;
+            }
+            return true;
+        }
+        else return false;
+
+
+
+    }
+}
+
+
 

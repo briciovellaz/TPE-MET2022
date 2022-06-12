@@ -2,6 +2,7 @@ package com.company;
 
 import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
 import jdk.internal.util.xml.impl.Pair;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,8 +43,15 @@ public class Medico extends Profesional{
         }
         return false;
     }
+    public boolean existeTurno(Turno t){
+        int dia=t.getFecha().getDayOfWeek().getValue()-1; // dia = 3 -1  == "miercoles"
+        int i =0;
+        Horario horario=horarios[dia].get(dia);
+        return horario.existeTurno(t);
 
-    public void liberarTurno(Turno t){
+    }
+
+    public void liberarTurno(@NotNull Turno t){
         for(Horario horario : horarios[t.getFecha().getDayOfWeek().getValue()]){
             if((t.getHoraInicio() == horario.getHoraInic()) && (t.getHoraFin() == horario.getHoraFin())){
                 horario.liberarTurno(t);

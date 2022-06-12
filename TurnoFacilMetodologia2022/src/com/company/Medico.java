@@ -1,6 +1,7 @@
 package com.company;
 
-import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
+//import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
+import com.company.filters.Filter;
 import jdk.internal.util.xml.impl.Pair;
 //import org.jetbrains.annotations.NotNull;
 
@@ -24,6 +25,10 @@ public class Medico extends Profesional{
         for (int i =0;i<7;i++){
             horarios[i] = new ArrayList<>();
         }
+    }
+
+    public Horario getHorario(int dia){
+        return horarios[dia].get(dia);
     }
     public void agregarHorario(int dia,LocalTime inicio,LocalTime fin,int duracionTurno){
        Horario horario = new Horario(inicio,fin,duracionTurno);
@@ -52,11 +57,10 @@ public class Medico extends Profesional{
         return false;
     }
     public boolean existeTurno(Turno t){
-        int dia=t.getFecha().getDayOfWeek().getValue()-1; // dia = 3 -1  == "miercoles"
+        int horario_dia=t.getFecha().getDayOfWeek().getValue()-1; // dia = (3-1)  == 2 == "miercoles"
         int i =0;
-        Horario horario=horarios[dia].get(dia);
+        Horario horario=horarios[horario_dia].get(horario_dia); // recupero el horario en el dia "X" del arr horarios
         return horario.existeTurno(t);
-
     }
 
     public void liberarTurno(/*@NotNull*/ Turno t){//el idea no me acepta el @notnull
@@ -76,6 +80,14 @@ public class Medico extends Profesional{
         }
         return turnos;
     }
+/* TERMINAR
+    public ArrayList<Turno> listarTurnos(int dia, Filter franjahoraria){//lista todos los turnos de un dia filtrados por franja horaria
+        ArrayList<Turno> turnos = new ArrayList<>();
+        for(Horario horario: horarios[dia] ){
+                turnos.addAll(horario.listarTurnos(franjahoraria)); //????
+            }
+        return turnos;
+    }*/
 
     public ArrayList<Horario> listarHorario (int dia){
         return horarios[dia];
@@ -91,11 +103,11 @@ public class Medico extends Profesional{
         }
     }
 
-    public Medico(String nombre, String especialidad, String contrasenia,int dni, String matricula) {
+    /*public Medico(String nombre, String especialidad, String contrasenia,int dni, String matricula) {
         super(nombre, contrasenia,dni);
         this.especialidad = especialidad;
         this.matricula=matricula;
-    }
+    }*/
 
     public String getMatricula() {
         return matricula;

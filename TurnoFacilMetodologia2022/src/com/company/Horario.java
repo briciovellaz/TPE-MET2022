@@ -41,10 +41,9 @@ public class Horario {
         }
         return turnosDisponibles;
     }
-    public ArrayList<Turno> listarTurnos(){
-        return turnos;
-    }//devuelve lista de turnos
-
+    public ArrayList<Turno> listarTurnos(){return turnos; }//devuelve lista de turnos
+    /// Falta implementar esta con filtro
+    // public ArrayList<Turno> listarTurnos(FIlter){return turnos; }//devuelve lista de turnos
 
     public boolean existeTurno(Turno t){
         return turnos.contains(t);
@@ -64,7 +63,7 @@ public class Horario {
                 turno.liberarTurno();
             }
         }
-        }
+    }
 
     private Turno getTurno(int index){ // rompe encapsulamiento ??
         return turnos.get(index);

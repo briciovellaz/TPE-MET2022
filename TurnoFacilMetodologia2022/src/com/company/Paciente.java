@@ -26,7 +26,16 @@ public class Paciente {
     public ArrayList<Turno> listarTurnos(){
         return turnos;
     }
-    public void borrarTurno(int index){
+    private void borrarTurno(int index){
         turnos.remove(index);
+    }
+
+    public void cancelarTurno(Turno t){
+        int i;
+        for(i=0; i<turnos.size(); i++){
+            if(t.equals(turnos.get(i))){
+                borrarTurno(i);
+            }
+        }
     }
 }

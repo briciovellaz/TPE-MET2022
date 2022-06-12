@@ -64,6 +64,7 @@ public class Secretaria extends Profesional{
     }
 
     public void cancelarTurno(Turno t){
+        t.getPaciente().cancelarTurno(t);
         t.getMedico().liberarTurno(t);
     }
 

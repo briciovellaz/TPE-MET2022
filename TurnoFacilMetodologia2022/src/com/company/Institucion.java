@@ -60,4 +60,8 @@ public class Institucion {
             default: return responsable;
         }
     }
+
+    public Paciente getPaciente(int index) {
+        return pacientes.get(index);
+    }
 }

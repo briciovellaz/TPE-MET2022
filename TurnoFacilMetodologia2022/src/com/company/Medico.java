@@ -2,7 +2,7 @@ package com.company;
 
 import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
 import jdk.internal.util.xml.impl.Pair;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,10 +13,18 @@ import java.util.Map;
 
 public class Medico extends Profesional{
     private String especialidad,matricula;
-    private ArrayList<String> obrasSociales;
+    private ArrayList<String> obrasSociales = new ArrayList<>();
     private ArrayList<Horario> horarios[] = new ArrayList[7]; // 0 = lunes
 
 
+    public Medico(String nombre,String contraseña,int DNI,String especialidad,String matricula){
+        super(nombre,contraseña,DNI);
+        this.especialidad = especialidad;
+        this.matricula = matricula;
+        for (int i =0;i<7;i++){
+            horarios[i] = new ArrayList<>();
+        }
+    }
     public void agregarHorario(int dia,LocalTime inicio,LocalTime fin,int duracionTurno){
        Horario horario = new Horario(inicio,fin,duracionTurno);
        horarios[dia].add(horario);
@@ -51,10 +59,12 @@ public class Medico extends Profesional{
 
     }
 
-    public void liberarTurno(@NotNull Turno t){
-        for(Horario horario : horarios[t.getFecha().getDayOfWeek().getValue()]){
-            if((t.getHoraInicio() == horario.getHoraInic()) && (t.getHoraFin() == horario.getHoraFin())){
-                horario.liberarTurno(t);
+    public void liberarTurno(/*@NotNull*/ Turno t){//el idea no me acepta el @notnull
+        if(t!= null) {
+            for (Horario horario : horarios[t.getFecha().getDayOfWeek().getValue()]) {
+                if ((t.getHoraInicio() == horario.getHoraInic()) && (t.getHoraFin() == horario.getHoraFin())) {
+                    horario.liberarTurno(t);
+                }
             }
         }
     }

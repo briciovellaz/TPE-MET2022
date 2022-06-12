@@ -14,15 +14,18 @@ public class Turno{
         return (paciente == null);
     }
 
+    //constructor de turno y se agrega a paciente y medico
     public Turno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
         this.paciente = paciente;
         this.medico = medico;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+        paciente.agregarTurno(this);
+        medico.agregarTurno(this);
     }
 
-    public void liberarTurno(){
+    public void liberarTurno(){//falta borrar el turno de la lista de turnos del paciente
         this.paciente=null;
     }
 

@@ -12,7 +12,7 @@ public class Secretaria extends Profesional{
         super(nombre,contrasenia,dni);
     }
 
-    public void addMedico(Medico m){
+    public void agregarMedico(Medico m){
         medicos.add(m);
     }
 

@@ -1,5 +1,10 @@
 package com.company;
 
+import sun.util.calendar.BaseCalendar;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,8 +13,12 @@ public class InterfaceProfesional {
     public static void main(String[] args) {
         //creo y completo institucion
         Institucion inst = new Institucion();
-        inst.agregar(new Secretaria("maria","maria" , 50123123));
+        Secretaria Esecretaria = new Secretaria("maria","admin" , 50123123);
+        Medico Emedico = new Medico("Juan Carlos","admin",50123124,"odontologo","6578");
+        inst.agregar(Esecretaria);
         inst.agregar(new Paciente(12345678,"Abel","Pintos","yoTecuido"));
+        inst.agregar(Emedico);
+        Esecretaria.agregarMedico(Emedico);
         //variables
         Scanner sn = new Scanner(System.in),teclado= new Scanner(System.in),sn2 = new Scanner(System.in);
         boolean passvalida = false,salir = false;
@@ -40,8 +49,7 @@ public class InterfaceProfesional {
                             if (index == -1) {
                                 System.out.println("EL DNI NO SE ENCUENTRA REGISTRADO");
                             }
-                        }
-                        while (index != -1 && tries < 3);
+                        } while (index == -1 && tries < 3);
                         tries = 0;
                         if (index != -1) {
                             do {
@@ -56,8 +64,7 @@ public class InterfaceProfesional {
                                     sesionActiva = inst.getProfesional(index,opcion);
                                     salir = true;
                                 }
-                            }
-                            while(tries < 3 && !passvalida);
+                            } while(tries < 3 && !passvalida);
 
                         }
                         break;
@@ -66,14 +73,12 @@ public class InterfaceProfesional {
                             System.out.println("INGRESE SU DOCUMENTO");
                             DNI = sn2.nextInt();
                             index = inst.buscarPosSecretaria(DNI);
-                            System.out.println("index"  + index);
                             tries++;
                             if (index == -1) {
                                 System.out.println("EL DNI NO SE ENCUENTRA REGISTRADO");
-                                break;
+
                             }
-                        }
-                        while (index == -1 && tries < 3);
+                        } while (index == -1 && tries < 3);
                         tries = 0;
                         if (index != -1) {
                             do {
@@ -89,8 +94,7 @@ public class InterfaceProfesional {
                                     salir = true;
                                     break;
                                 }
-                            }
-                            while(tries < 3 && !passvalida);
+                            } while(tries < 3 && !passvalida);
 
                         }
                         break;
@@ -126,9 +130,11 @@ public class InterfaceProfesional {
 
                 opcion = sn2.nextInt();
                 switch (opcion){
-                    case 1: {
-                        System.out.println("cargar turno");
+                    case 1: {//funciona pero sin chequeos de los datos
+                        System.out.println("---cargar turno---");
                         int DNIPaciente,DNIMedico;
+                        Medico medico;
+                        Paciente paciente;
                         //solicita DNI paciente y consulta si existe
                         do {
                             System.out.println("ingrese DNI del paciente o 0 para volver al menu");
@@ -140,6 +146,7 @@ public class InterfaceProfesional {
                             }
                         } while (index == -1);
                         if(DNIPaciente ==0){break;}
+                        paciente = inst.getPaciente(index);
                         //solicita DNI medico y consulta si existe
                         do {
                             System.out.println("ingrese DNI del medico o 0 para volver al menu");
@@ -151,33 +158,115 @@ public class InterfaceProfesional {
                             }
                         } while (index == -1);
                         if(DNIMedico ==0){break;}
+                        medico = (Medico) inst.getProfesional(index,1);
                         System.out.println("DNI medico y paciente correctos");
-                        break;
-                    }//algo
-                    case 2: {
-                        System.out.println("cancelar un turno");
-                        break;}//algo
-                    case 3: {
-                        System.out.println("ver turnos filtrando");
+
+                        //fecha
+                        System.out.println("ingrese el dia del turno");
+                        int dia = sn2.nextInt();
+                        System.out.println("ingrese el mes del turno");
+                        int mes = sn2.nextInt();
+                        System.out.println("ingrese el año del turno");
+                        int año = sn2.nextInt();
+                        LocalDate fecha = LocalDate.of(año,mes,dia);
+                        //inicio hora
+                        System.out.println("ingrese la hora de inicio");
+                        int horaInicio = sn2.nextInt();
+                        System.out.println("ingrese los minutos de la hora de inicio");
+                        int minutosInicio = sn2.nextInt();
+                        LocalTime timeInicio = LocalTime.of(horaInicio,minutosInicio);
+                        //hora fin
+                        System.out.println("ingrese la hora de fin");
+                        int horaFin = sn2.nextInt();
+                        System.out.println("ingrese los minutos de la hora de fin");
+                        int minutosFin = sn2.nextInt();
+                        LocalTime timeFin = LocalTime.of(horaFin,horaInicio);
+
+                        //el constructor de turno se agrega a si mismo  a la lista de turnos de medico y paciente
+                        Turno turno = new Turno(paciente,medico,fecha,timeInicio,timeFin);
+
+                        System.out.println("turno de paciente " + turno.getPaciente().getDNI() + " con el medico " +turno.getMedico().getDNI() +" el dia "+ turno.getFecha() +" fue agregado correctamente");
+
+                        System.out.println("presione una tecla para continuar");
+                        teclado.next();
                         break;
                     }
-                    case 4: {
-                        System.out.println("asignar franja horaria a un medico");
+                    case 2: {//hacer
+                        System.out.println("---cancelar un turno---");
+
+                        System.out.println("presione una tecla para continuar");
+                        teclado.next();
+                        break;}
+                    case 3: {//hacer
+                        System.out.println("---ver turnos filtrando---");
+
+                        System.out.println("presione una tecla para continuar");
+                        teclado.next();
                         break;
                     }
-                    case 5:{//creo que funciona a testear
-                        System.out.println("lista de medicos a cargo");
-                        System.out.println("DNI,matricula,nombre");
+                    case 4: { // funciona correctamente pero no tiene chequeo de datos
+                        System.out.println("---asignar franja horaria a un medico---");
+                        int DNIMedico;
+                        Medico medico = null;
+                        do {
+                            System.out.println("ingrese DNI del medico o 0 para volver al menu");
+                            DNIMedico = sn2.nextInt();
+                            if(DNIMedico ==0){break;}
+                            index = inst.buscarPosMeadico(DNIMedico);
+                            if(index == -1){
+                                System.out.println("el DNI del medico no existe");
+                            }else{
+                                medico = (Medico) inst.getProfesional(index,1);
+                                System.out.println("medico seleccionado: " + medico.getDNI() +" "+ medico.getMatricula()+" "+ medico.getNombre() +" "+ medico.getEspecialidad() );
+                            }
+                        } while (index == -1);
+                        if(DNIMedico ==0){break;}
+                        //fecha
+                        System.out.println("ingrese el dia de la semana, 0=lunes");
+                        int dia = sn2.nextInt();
+
+                        System.out.println("ingrese la duracion de los turnos en ese horario");
+                        int duracion = sn2.nextInt();
+
+                        //inicio hora
+                        System.out.println("ingrese la hora de inicio");
+                        int horaInicio = sn2.nextInt();
+                        System.out.println("ingrese los minutos de la hora de inicio");
+                        int minutosInicio = sn2.nextInt();
+                        LocalTime timeInicio = LocalTime.of(horaInicio,minutosInicio);
+                        //hora fin
+                        System.out.println("ingrese la hora de fin");
+                        int horaFin = sn2.nextInt();
+                        System.out.println("ingrese los minutos de la hora de fin");
+                        int minutosFin = sn2.nextInt();
+                        LocalTime timeFin = LocalTime.of(horaFin,horaInicio);
+                        medico.agregarHorario(dia,timeInicio,timeFin,duracion);
+
+                        System.out.println("horario cargado a "+ medico.getNombre() +" con DNI " + medico.getDNI()+ " correctamente");
+
+                        System.out.println("presione una tecla para continuar");
+                        teclado.next();
+                        break;
+                    }
+                    case 5:{//funciona correctamente
+                        System.out.println("---lista de medicos a cargo---");
+                        System.out.println("DNI,matricula,nombre,obras sociales que atiende");
                         for (Medico medico:secretariaActiva.getMedicos()){
-                            System.out.println(medico.getDNI() +" "+ medico.getMatricula() +" " + medico.getNombre() +""+ medico.getEspecialidad() +""+medico.getObrasSociales());
+                            System.out.println(medico.getDNI() +" "+ medico.getMatricula() +" " + medico.getNombre() +""+ medico.getEspecialidad() +" "+medico.getObrasSociales());
                         }
+
+                        System.out.println("presione una tecla para continuar");
+                        teclado.next();
                         break;
                     }
-                    case 6:{
-                        System.out.println("reasignar turno");
+                    case 6:{//hacer
+                        System.out.println("---reasignar turno---");
+
+                        System.out.println("presione una tecla para continuar");
+                        teclado.next();
                         break;
                     }
-                    case 7: {
+                    case 7: {//funciona correctamente
                         System.out.println("sesion finalizada");
                         salir= true;
                         break;

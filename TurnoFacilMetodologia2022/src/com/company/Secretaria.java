@@ -36,15 +36,15 @@ public class Secretaria extends Profesional{
         }
     }
     //public void cargarTurno(Medico m, Turno t) ::: les puse el mismo nombre ya que hacen lo mismo
-    public void asignarTurno(Medico m, Turno t){
+    public boolean asignarTurno(Medico m, Turno t){
         int i=0;
         while(i< medicos.size()&&!medicos.get(i).equals(m)){i++;}
-        medicos.get(i).agregarTurno(t);
+        return medicos.get(i).agregarTurno(t);
     }
 
 
-    public void asignarTurno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin){
-        asignarTurno(medico, new Turno(paciente, medico, fecha, horaInicio, horaFin));
+    public boolean asignarTurno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin){
+        return asignarTurno(medico, new Turno(paciente, medico, fecha, horaInicio, horaFin));
     }
 
     public boolean existeTurno(Turno t){

@@ -28,7 +28,7 @@ public class Horario {
     }
     public ArrayList<LocalTime> TurnosDisponibles(LocalDate dia){
         ArrayList<LocalTime> turnosDisponibles = new ArrayList<>();
-        for(LocalTime i = horaInic;i.isBefore(horaFin);i.plusMinutes(duracion)) {//recorre todos los horarios de inicio posibles
+        for(LocalTime i = horaInic;i.isBefore(horaFin);i=i.plusMinutes(duracion)) {//recorre todos los horarios de inicio posibles
             boolean libre = true;//        ----8   8:30 9 9:30     -> 29/05  si hay turno con fecha() -> si  que hora? esta ocupada?
             for (Turno turno : turnos) {//recorre la lista de todos los turnos del medico
                 if (turno.getFecha().isEqual(dia) && i.equals(turno.getHoraInicio())) {//pregunta si existe otro turno con misma fecha y horario

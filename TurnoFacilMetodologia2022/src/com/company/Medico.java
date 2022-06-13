@@ -43,13 +43,13 @@ public class Medico extends Profesional{
     // a la lista que contiene las horas de inicio de los turno libres en dicha fecha
     public ArrayList<LocalTime> TurnosDisponibles(LocalDate dia){
         ArrayList<LocalTime> turnosDisponibles = new ArrayList<>();
-        for(Horario horario:horarios[dia.getDayOfWeek().getValue()]){//recorre la lista horarios de un dia
+        for(Horario horario:horarios[dia.getDayOfWeek().getValue()-1]){//recorre la lista horarios de un dia
             turnosDisponibles.addAll(horario.TurnosDisponibles(dia));//recupera los turnos disponibles de ese horario en ese dia
         }
         return turnosDisponibles;
     }
     public boolean agregarTurno(Turno turno){
-        for(Horario horario : horarios[turno.getFecha().getDayOfWeek().getValue()]){
+        for(Horario horario : horarios[turno.getFecha().getDayOfWeek().getValue()-1]){
             if(horario.agregarTurno(turno)){
                 return true;
             }

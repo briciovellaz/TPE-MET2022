@@ -15,6 +15,13 @@ public class InterfaceProfesional {
         Institucion inst = new Institucion();
         Secretaria Esecretaria = new Secretaria("maria","admin" , 50123123);
         Medico Emedico = new Medico("Juan Carlos","admin",50123124,"odontologo","6578");
+        Emedico.agregarHorario(0,LocalTime.of(9,0),LocalTime.of(12,0),20);
+        Emedico.agregarHorario(1,LocalTime.of(9,0),LocalTime.of(12,0),20);
+        Emedico.agregarHorario(2,LocalTime.of(9,0),LocalTime.of(12,0),20);
+        Emedico.agregarHorario(3,LocalTime.of(9,0),LocalTime.of(12,0),20);
+        Emedico.agregarHorario(4,LocalTime.of(9,0),LocalTime.of(12,0),20);
+        Emedico.agregarHorario(5,LocalTime.of(9,0),LocalTime.of(12,0),20);
+        Emedico.agregarHorario(6,LocalTime.of(9,0),LocalTime.of(12,0),20);
         inst.agregar(Esecretaria);
         inst.agregar(new Paciente(12345678,"Abel","Pintos","yoTecuido"));
         inst.agregar(Emedico);
@@ -169,6 +176,10 @@ public class InterfaceProfesional {
                         System.out.println("ingrese el año del turno");
                         int año = sn2.nextInt();
                         LocalDate fecha = LocalDate.of(año,mes,dia);
+                        System.out.println("turnos disponibles el dia" + fecha);
+                        for(LocalTime inicDisponible :medico.TurnosDisponibles(fecha)){
+                            System.out.println(inicDisponible);
+                        }
                         //inicio hora
                         System.out.println("ingrese la hora de inicio");
                         int horaInicio = sn2.nextInt();
@@ -180,12 +191,12 @@ public class InterfaceProfesional {
                         int horaFin = sn2.nextInt();
                         System.out.println("ingrese los minutos de la hora de fin");
                         int minutosFin = sn2.nextInt();
-                        LocalTime timeFin = LocalTime.of(horaFin,horaInicio);
+                        LocalTime timeFin = LocalTime.of(horaFin,minutosFin);
 
                         //el constructor de turno se agrega a si mismo  a la lista de turnos de medico y paciente
                         Turno turno = new Turno(paciente,medico,fecha,timeInicio,timeFin);
 
-                        System.out.println("turno de paciente " + turno.getPaciente().getDNI() + " con el medico " +turno.getMedico().getDNI() +" el dia "+ turno.getFecha() +" fue agregado correctamente");
+                        System.out.println("turno de paciente " + turno.getPaciente().getDNI() + " con el medico " +turno.getMedico().getDNI() +" el dia "+ turno.getFecha() + " "+ turno.getHoraInicio()  +" fue agregado correctamente");
 
                         System.out.println("presione una tecla para continuar");
                         teclado.next();

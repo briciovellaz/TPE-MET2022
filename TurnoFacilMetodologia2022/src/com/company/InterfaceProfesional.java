@@ -4,6 +4,7 @@ package com.company;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -177,15 +178,17 @@ public class InterfaceProfesional {
                         int año = sn2.nextInt();
                         LocalDate fecha = LocalDate.of(año,mes,dia);
                         System.out.println("turnos disponibles el dia" + fecha);
-                        for(LocalTime inicDisponible :medico.TurnosDisponibles(fecha)){
-                            System.out.println(inicDisponible);
+                        int j=0;
+                        ArrayList<LocalTime> disponibles = medico.TurnosDisponibles(fecha);
+                        for(LocalTime inicDisponible :disponibles){
+                            System.out.println(j + ": "+inicDisponible);
+                            j++;
                         }
                         //inicio hora
-                        System.out.println("ingrese la hora de inicio");
-                        int horaInicio = sn2.nextInt();
-                        System.out.println("ingrese los minutos de la hora de inicio");
-                        int minutosInicio = sn2.nextInt();
-                        LocalTime timeInicio = LocalTime.of(horaInicio,minutosInicio);
+                        System.out.println("ingrese el numero del horario que desee");
+                        int numero = sn2.nextInt();
+
+                        LocalTime timeInicio = disponibles.get(numero);
 
 
                         //el constructor de turno se agrega a si mismo  a la lista de turnos de medico y paciente

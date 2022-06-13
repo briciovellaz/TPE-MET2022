@@ -186,15 +186,10 @@ public class InterfaceProfesional {
                         System.out.println("ingrese los minutos de la hora de inicio");
                         int minutosInicio = sn2.nextInt();
                         LocalTime timeInicio = LocalTime.of(horaInicio,minutosInicio);
-                        //hora fin
-                        System.out.println("ingrese la hora de fin");
-                        int horaFin = sn2.nextInt();
-                        System.out.println("ingrese los minutos de la hora de fin");
-                        int minutosFin = sn2.nextInt();
-                        LocalTime timeFin = LocalTime.of(horaFin,minutosFin);
+
 
                         //el constructor de turno se agrega a si mismo  a la lista de turnos de medico y paciente
-                        Turno turno = new Turno(paciente,medico,fecha,timeInicio,timeFin);
+                        Turno turno = new Turno(paciente,medico,fecha,timeInicio);
 
                         System.out.println("turno de paciente " + turno.getPaciente().getDNI() + " con el medico " +turno.getMedico().getDNI() +" el dia "+ turno.getFecha() + " "+ turno.getHoraInicio()  +" fue agregado correctamente");
 

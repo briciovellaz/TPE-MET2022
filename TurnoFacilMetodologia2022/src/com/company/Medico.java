@@ -66,7 +66,7 @@ public class Medico extends Profesional{
     public void liberarTurno(/*@NotNull*/ Turno t){//el idea no me acepta el @notnull
         if(t!= null) {
             for (Horario horario : horarios[t.getFecha().getDayOfWeek().getValue()]) {
-                if ((t.getHoraInicio() == horario.getHoraInic()) && (t.getHoraFin() == horario.getHoraFin())) {
+                if ((t.getHoraInicio() == horario.getHoraInic()) && (t.getHoraInicio().plusMinutes(t.getDuracion()) == horario.getHoraFin())) {
                     horario.liberarTurno(t);
                 }
             }

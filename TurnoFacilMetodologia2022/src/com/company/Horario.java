@@ -50,7 +50,8 @@ public class Horario {
 
     }
     public boolean agregarTurno(Turno turno){ //agrega un turno
-        if(turno.getHoraInicio().isBefore(horaFin) && turno.getHoraFin().isAfter(horaInic)){
+        if(turno.getHoraInicio().isBefore(horaFin) && turno.getHoraInicio().plusMinutes(turno.getDuracion()).isAfter(horaInic)){
+            turno.setDuracion(duracion);
             turnos.add(turno);
             return true;
         }

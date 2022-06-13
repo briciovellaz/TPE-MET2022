@@ -8,19 +8,19 @@ public class Turno{
     private Medico medico;
     private LocalDate fecha;
     private LocalTime horaInicio;
-    private LocalTime horaFin;
-
+    //private LocalTime horaFin;
+    private int duracion;
     public boolean estaLibre(){
         return (paciente == null);
     }
 
     //constructor de turno y se agrega a paciente y medico
-    public Turno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
+    public Turno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio) {
         this.paciente = paciente;
         this.medico = medico;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+        //this.horaFin = horaFin;
         paciente.agregarTurno(this);
         medico.agregarTurno(this);
     }
@@ -45,8 +45,16 @@ public class Turno{
         return horaInicio;
     }
 
-    public LocalTime getHoraFin() {
+    /*public LocalTime getHoraFin() {
         return horaFin;
+    }*/
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 
     @Override
@@ -55,7 +63,7 @@ public class Turno{
             return (   this.getMedico().equals(((Turno)obj).getMedico())
                     && this.getFecha().equals(((Turno)obj).getFecha())
                     && this.getHoraInicio().equals(((Turno)obj).getHoraInicio())
-                    && this.getHoraFin().equals(((Turno)obj).getHoraFin())
+                    //&& this.getHoraFin().equals(((Turno)obj).getHoraFin())
                     && this.getPaciente().equals(((Turno)obj).getPaciente())  );
         }
         catch (Exception e){

@@ -43,8 +43,8 @@ public class Secretaria extends Profesional{
     }
 
 
-    public boolean asignarTurno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin){
-        return asignarTurno(medico, new Turno(paciente, medico, fecha, horaInicio, horaFin));
+    public boolean asignarTurno(Paciente paciente, Medico medico, LocalDate fecha, LocalTime horaInicio){
+        return asignarTurno(medico, new Turno(paciente, medico, fecha, horaInicio));
     }
 
     public boolean existeTurno(Turno t){

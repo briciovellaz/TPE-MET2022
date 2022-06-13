@@ -7,7 +7,7 @@ public class Responsable extends Profesional{
     }
 
     public void cargarMedico(String nombre,String especialidad,String contrasenia,int dni,String matricula){
-        Medico m=new Medico(nombre,especialidad,contrasenia,dni,matricula);
+        Medico m=new Medico(nombre,especialidad,dni,contrasenia,matricula);
     }
 
     public void cargarSecretaria(String nombre, String contrasenia,int dni){

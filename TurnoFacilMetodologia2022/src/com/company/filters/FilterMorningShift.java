@@ -2,7 +2,7 @@ package com.company.filters;
 
 import com.company.Medico;
 
-public class FilterMorningShift implements Filter {
+public class FilterMorningShift extends Filter {
 
     private int fin_maniana;
 

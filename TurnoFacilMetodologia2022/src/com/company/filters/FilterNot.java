@@ -10,7 +10,7 @@ public class FilterNot extends Filter {
     }
 
     @Override
-    public boolean evaluar(Medico C) {
-        return (!f1.evaluar(C));
+    public boolean evaluar(Object o) {
+        return (!f1.evaluar(o));
     }
 }

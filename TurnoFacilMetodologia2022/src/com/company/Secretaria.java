@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.filters.Filter;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -21,6 +23,16 @@ public class Secretaria extends Profesional{
         for(Medico m: medicos){
             for(int i=0;i<=7;i++){
             salida.addAll(m.listarTurnos(i));
+            }
+        }
+        return salida;
+    }
+
+        public List<Turno> listarTurnos(int dia,Filter f){
+        List<Turno> salida=new ArrayList<>();
+        for(Medico m: medicos){
+            for(int i=0;i<=7;i++){
+                salida.addAll(m.listarTurnos(dia,f));
             }
         }
         return salida;
@@ -65,7 +77,6 @@ public class Secretaria extends Profesional{
 
     public void cancelarTurno(Turno t){
         t.getPaciente().cancelarTurno(t);
-        t.getMedico().liberarTurno(t);
     }
 
     public void asignarFranjaHoraria(Medico me ,int dia , LocalTime trabaja_desde , LocalTime trabaja_hasta , int duracion_de_turnos){

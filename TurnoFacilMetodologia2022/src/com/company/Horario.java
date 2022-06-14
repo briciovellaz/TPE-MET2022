@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.filters.Filter;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -23,6 +25,9 @@ public class Horario {
         return horaFin;
     }
 
+    public void borrarTurno(int index){
+        turnos.remove(index);
+    }
     public int getDuracion() {
         return duracion;
     }
@@ -41,10 +46,17 @@ public class Horario {
         }
         return turnosDisponibles;
     }
-    public ArrayList<Turno> listarTurnos(){return turnos; }//devuelve lista de turnos
-    /// Falta implementar esta con filtro
-    // public ArrayList<Turno> listarTurnos(FIlter){return turnos; }//devuelve lista de turnos
+    public ArrayList<Turno> listarTurnos(){return new ArrayList<>(turnos); }//devuelve lista de turnos
 
+         public ArrayList<Turno> listarTurnos(Filter f){
+        ArrayList<Turno> salida=new ArrayList<>();
+        for(Turno t:turnos){
+            if (f.evaluar(t)) {
+                salida.add(t);
+            }
+        }
+        return salida;
+    }
     public boolean existeTurno(Turno t){
         return turnos.contains(t);
 
@@ -58,13 +70,6 @@ public class Horario {
         return false;
     }
 
-    public void liberarTurno(Turno t){ // no se si esta bien
-        for (Turno turno : turnos) {//recorre la lista de todos los turnos del medico
-            if (turno.getFecha().isEqual(t.getFecha()) && turno.getHoraInicio().equals(t.getHoraInicio())) {//pregunta si existe otro turno con misma fecha y horario
-                turno.liberarTurno();
-            }
-        }
-    }
 
     private Turno getTurno(int index){ // rompe encapsulamiento ??
         return turnos.get(index);

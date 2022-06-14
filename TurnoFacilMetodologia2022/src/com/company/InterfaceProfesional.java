@@ -2,6 +2,7 @@ package com.company;
 
 //import sun.util.calendar.BaseCalendar;
 
+import com.company.filters.FilterMorningShift;
 import sun.security.x509.OtherName;
 
 import java.time.LocalDate;
@@ -16,8 +17,10 @@ public class InterfaceProfesional {
     public static void main(String[] args) {
         //creo y completo institucion
         Institucion inst = new Institucion();
-        Secretaria Esecretaria = new Secretaria("maria","admin" , 50123123);
+        Secretaria Esecretaria = new Secretaria("Maria Gimenez ","admin" , 50123123);
+
         Medico Emedico = new Medico("Juan Carlos","admin",50123124,"odontologo","6578");
+        Esecretaria.agregarMedico(Emedico);
         Emedico.agregarHorario(0,LocalTime.of(9,0),LocalTime.of(12,0),20);
         Emedico.agregarHorario(1,LocalTime.of(9,0),LocalTime.of(12,0),20);
         Emedico.agregarHorario(2,LocalTime.of(9,0),LocalTime.of(12,0),20);
@@ -28,6 +31,14 @@ public class InterfaceProfesional {
         inst.agregar(Esecretaria);
         inst.agregar(new Paciente(12345678,"Abel","Pintos","yoTecuido"));
         inst.agregar(Emedico);
+        Emedico = new Medico("Pepe Argento","admin",50123125,"pediatra","3536");
+        Emedico.agregarHorario(0,LocalTime.of(14,0),LocalTime.of(19,0),20);
+        Emedico.agregarHorario(1,LocalTime.of(14,0),LocalTime.of(19,0),20);
+        Emedico.agregarHorario(2,LocalTime.of(14,0),LocalTime.of(19,0),20);
+        Emedico.agregarHorario(3,LocalTime.of(14,0),LocalTime.of(19,0),20);
+        Emedico.agregarHorario(4,LocalTime.of(14,0),LocalTime.of(19,0),20);
+        Emedico.agregarHorario(5,LocalTime.of(14,0),LocalTime.of(19,0),20);
+        Emedico.agregarHorario(6,LocalTime.of(16,0),LocalTime.of(18,0),30);
         Esecretaria.agregarMedico(Emedico);
         //variables
         Scanner sn = new Scanner(System.in),teclado= new Scanner(System.in),sn2 = new Scanner(System.in);
@@ -73,6 +84,7 @@ public class InterfaceProfesional {
                                     System.out.println("Inicio de sesion correcto, bienvenido");
                                     sesionActiva = inst.getProfesional(index,opcion);
                                     salir = true;
+                                    break;
                                 }
                             } while(tries < 3 );
 
@@ -181,17 +193,17 @@ public class InterfaceProfesional {
                         System.out.println("ingrese el mes del turno");
                         int mes = sn2.nextInt();
                         while (mes < 1 || mes >12)  {
-                            System.out.println("ingrese una mes valido");
+                            System.out.println("ingrese un mes valido");
                             mes = sn2.nextInt();
                             }
                         System.out.println("ingrese el año del turno");
                         int año = sn2.nextInt();
                         while (año < LocalDate.now().getYear())  {
-                            System.out.println("ingrese una año valido");
+                            System.out.println("ingrese un año valido");
                             año = sn2.nextInt();
                             }
                         LocalDate fecha = LocalDate.of(año,mes,dia);
-                        System.out.println("turnos disponibles el dia" + fecha);
+                        System.out.println("turnos disponibles del dia" + fecha);
                         int j=0;
                         ArrayList<LocalTime> disponibles = medico.TurnosDisponibles(fecha);
                         for(LocalTime inicDisponible :disponibles){
@@ -216,12 +228,41 @@ public class InterfaceProfesional {
                     }
                     case 2: {//hacer
                         System.out.println("---cancelar un turno---");
+                        int k =0;
+                        Paciente paciente;
+                        int DNIPaciente;
+                        do {
+                            System.out.println("ingrese DNI del paciente o 0 para volver al menu");
+                            DNIPaciente = sn2.nextInt();
+                            if(DNIPaciente ==0){break;}
+                            index = inst.buscarPosPaciente(DNIPaciente);
+                            if(index == -1){
+                                System.out.println("el DNI de paciente no existe");
+                            }
+                        } while (index == -1);
+                        if(DNIPaciente ==0){break;}
+                        paciente = inst.getPaciente(index);
+                        for(Turno turno:paciente.listarTurnos()){
+                            System.out.println(k + turno.getFecha().toString() + turno.getHoraInicio().toString() +"medico" +turno.getMedico().getDNI());
+                            k++;
+                        }
+                        System.out.println("ingrese numero de turno a cancelar");
+                        int numero = sn2.nextInt();
+                        paciente.borrarTurno(numero);
 
                         System.out.println("presione una tecla para continuar");
                         teclado.next();
                         break;}
                     case 3: {//hacer
+
                         System.out.println("---ver turnos filtrando---");
+                        System.out.println("ingrese dia para listar sus turnos");
+                        int numero = sn2.nextInt();
+                        System.out.println("ingrese horario para listar sus turnos");
+                        int horario=sn2.nextInt();
+                        for(Turno t:secretariaActiva.listarTurnos(horario,new FilterMorningShift(horario))){
+                            System.out.println( t.getFecha().toString() + " " + t.getHoraInicio().toString() +"  Medico: " + t.getMedico().getNombre() + " DNI " +t.getMedico().getDNI() );
+                        }
 
                         System.out.println("presione una tecla para continuar");
                         teclado.next();
@@ -284,6 +325,63 @@ public class InterfaceProfesional {
                     }
                     case 6:{//hacer
                         System.out.println("---reasignar turno---");
+                        Paciente paciente;
+                        int DNIPaciente;
+                        do {
+                            System.out.println("ingrese DNI del paciente o 0 para volver al menu");
+                            DNIPaciente = sn2.nextInt();
+                            if(DNIPaciente ==0){break;}
+                            index = inst.buscarPosPaciente(DNIPaciente);
+                            if(index == -1){
+                                System.out.println("el DNI de paciente no existe");
+                            }
+                        } while (index == -1);
+                        if(DNIPaciente ==0){break;}
+                        paciente = inst.getPaciente(index);
+                        int k =0;
+                        for(Turno turno:paciente.listarTurnos()){
+                            System.out.println(k + turno.getFecha().toString() + turno.getHoraInicio().toString() +"medico" +turno.getMedico().getDNI());
+                            k++;
+                        }
+                        System.out.println("ingrese numero de turno a reasignar");
+                        int numero = sn2.nextInt();
+                        Turno turnoAMod = paciente.getTurno(numero);
+                        System.out.println("ingrese el nuevo dia del turno");
+                        int dia = sn2.nextInt();
+                        while (dia < 1 || dia > 31)  {
+                            System.out.println("ingrese un dia valido");
+                            dia = sn2.nextInt();
+                        }
+                        System.out.println("ingrese el nuevo mes del turno");
+                        int mes = sn2.nextInt();
+                        while (mes < 1 || mes >12)  {
+                            System.out.println("ingrese un mes valido");
+                            mes = sn2.nextInt();
+                        }
+                        System.out.println("ingrese el nuevo año del turno");
+                        int año = sn2.nextInt();
+                        while (año < LocalDate.now().getYear())  {
+                            System.out.println("ingrese un año valido");
+                            año = sn2.nextInt();
+                        }
+                        LocalDate fecha = LocalDate.of(año,mes,dia);
+                        System.out.println("turnos disponibles del dia" + fecha);
+                        int j=0;
+                        ArrayList<LocalTime> disponibles = turnoAMod.getMedico().TurnosDisponibles(fecha);
+                        for(LocalTime inicDisponible :disponibles){
+                            System.out.println(j + ": "+inicDisponible);
+                            j++;
+                        }
+                        //inicio hora
+                        System.out.println("ingrese el numero del horario que desee");
+                        numero = sn2.nextInt();
+
+                        LocalTime timeInicio = disponibles.get(numero);
+
+                        Turno turnoNuevo=new Turno(paciente,paciente.listarTurnos().get(numero).getMedico(),fecha,timeInicio);
+
+                        secretariaActiva.reasignarTurno(paciente.listarTurnos().get(numero),turnoNuevo);
+
 
                         System.out.println("presione una tecla para continuar");
                         teclado.next();

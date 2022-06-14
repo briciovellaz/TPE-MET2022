@@ -11,8 +11,7 @@ public class FilterAnd extends Filter {
         this.f2 = f2;
     }
 
-    @Override
-    public boolean evaluar(Medico m) {
-        return (f1.evaluar(m) && f2.evaluar(m));
+    public boolean evaluar(Object o) {
+        return (f1.evaluar(o) && f2.evaluar(o));
     }
 }

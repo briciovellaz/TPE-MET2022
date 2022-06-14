@@ -1,18 +1,22 @@
 package com.company.filters;
 
-import com.company.Medico;
+import com.company.Turno;
+import java.time.LocalTime;
 
 public class FilterMorningShift extends Filter {
 
-    private int fin_maniana;
+    private LocalTime fin_maniana;
 
     public FilterMorningShift(int hora){
-        this.fin_maniana = hora;
+        this.fin_maniana = LocalTime.of(hora,0);
     }
-    @Override
-    public boolean evaluar(Medico m/* , int dia */) {
-       // return m.getHorario(dia).getHoraFin().isBefore(fin_maniana);
 
-        return true; //borrar, es solo para que compile
+    @Override
+    public boolean evaluar(Object o) {
+        try {
+            return ((Turno)o).getHoraInicio().isBefore(fin_maniana);
+        } catch (Exception e){
+            return false;
+        }
     }
 }

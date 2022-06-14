@@ -24,12 +24,12 @@ public class Paciente {
         turnos.add(turno);
     }
     public ArrayList<Turno> listarTurnos(){
-        return turnos;
+        return new ArrayList<>(turnos);
     }
-    private void borrarTurno(int index){
+    public void borrarTurno(int index){
         turnos.remove(index);
     }
-
+    public Turno getTurno(int index){return turnos.get(index);}
     public void cancelarTurno(Turno t){
         int i;
         for(i=0; i<turnos.size(); i++){

@@ -62,16 +62,16 @@ public class Medico extends Profesional{
         Horario horario=horarios[horario_dia].get(horario_dia); // recupero el horario en el dia "X" del arr horarios
         return horario.existeTurno(t);
     }
-
-    public void liberarTurno(/*@NotNull*/ Turno t){//el idea no me acepta el @notnull
+    /*
+    public void liberarTurno( Turno t){//el idea no me acepta el @notnull
         if(t!= null) {
             for (Horario horario : horarios[t.getFecha().getDayOfWeek().getValue()]) {
                 if ((t.getHoraInicio() == horario.getHoraInic()) && (t.getHoraInicio().plusMinutes(t.getDuracion()) == horario.getHoraFin())) {
-                    horario.liberarTurno(t);
+                    horario.borrarTurno(t);
                 }
             }
         }
-    }
+    }   */
 
     public ArrayList<Turno> listarTurnos(int dia){//lista todos los turnos de un dia
         ArrayList<Turno> turnos = new ArrayList<>();
@@ -80,14 +80,14 @@ public class Medico extends Profesional{
         }
         return turnos;
     }
-/* TERMINAR
-    public ArrayList<Turno> listarTurnos(int dia, Filter franjahoraria){//lista todos los turnos de un dia filtrados por franja horaria
+
+    public ArrayList<Turno> listarTurnos(int dia, Filter f){//lista todos los turnos de un dia filtrados por franja horaria
         ArrayList<Turno> turnos = new ArrayList<>();
         for(Horario horario: horarios[dia] ){
-                turnos.addAll(horario.listarTurnos(franjahoraria)); //????
+                turnos.addAll(horario.listarTurnos(f)); //????
             }
         return turnos;
-    }*/
+    }
 
     public ArrayList<Horario> listarHorario (int dia){
         return horarios[dia];

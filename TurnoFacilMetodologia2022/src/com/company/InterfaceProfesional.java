@@ -2,6 +2,8 @@ package com.company;
 
 //import sun.util.calendar.BaseCalendar;
 
+import sun.security.x509.OtherName;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -172,10 +174,22 @@ public class InterfaceProfesional {
                         //fecha
                         System.out.println("ingrese el dia del turno");
                         int dia = sn2.nextInt();
+                        while (dia < 1 || dia > 31)  {
+                            System.out.println("ingrese una dia valido");
+                            dia = sn2.nextInt();
+                            }
                         System.out.println("ingrese el mes del turno");
                         int mes = sn2.nextInt();
+                        while (mes < 1 || mes >12)  {
+                            System.out.println("ingrese una mes valido");
+                            mes = sn2.nextInt();
+                            }
                         System.out.println("ingrese el año del turno");
                         int año = sn2.nextInt();
+                        while (año < LocalDate.now().getYear())  {
+                            System.out.println("ingrese una año valido");
+                            año = sn2.nextInt();
+                            }
                         LocalDate fecha = LocalDate.of(año,mes,dia);
                         System.out.println("turnos disponibles el dia" + fecha);
                         int j=0;

@@ -1,0 +1,23 @@
+# Sprint Retrospective
+*Fecha: 23/05/2022*
+**Temas a tratar**
+* Diagrama de Clases
+* Jira
+* Miro
+* Código
+**Action Items(Estrategia Grupal)**
+* Chequear con diagrama de Clases y Código que las capturas de requerimientos de las user stories estén completas y no hayan huecos
+* Diagrama de Clases: Chequear relaciones y agregar cardinalidades
+* Interfaz : Debería de haber dos sistemas , S1(Usuarios) y S2(Profesionales)
+* Repartir Tasks
+
+*Fecha 30/05/2022*
+**Temas a tratar**
+* Diagrama de clases 
+* Código
+
+**Action Items(Estrategia Grupal)**
+* filtros: utilizar object para los filtros genéricos y para los especiales castear
+* diagrama de clases : actualizar el diagrama con los nuevos métodos y clases
+* repartir tasks
+* interfaz : refinar y agregar funcionalidades

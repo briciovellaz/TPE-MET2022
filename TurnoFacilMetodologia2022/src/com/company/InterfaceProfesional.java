@@ -74,7 +74,7 @@ public class InterfaceProfesional {
                                     sesionActiva = inst.getProfesional(index,opcion);
                                     salir = true;
                                 }
-                            } while(tries < 3 && !passvalida);
+                            } while(tries < 3 );
 
                         }
                         break;
@@ -104,7 +104,7 @@ public class InterfaceProfesional {
                                     salir = true;
                                     break;
                                 }
-                            } while(tries < 3 && !passvalida);
+                            } while(tries < 3 );
 
                         }
                         break;
@@ -140,7 +140,7 @@ public class InterfaceProfesional {
 
                 opcion = sn2.nextInt();
                 switch (opcion){
-                    case 1: {//funciona pero sin chequeos de los datos
+                    case 1: {//funciona
                         System.out.println("---cargar turno---");
                         int DNIPaciente,DNIMedico;
                         Medico medico;

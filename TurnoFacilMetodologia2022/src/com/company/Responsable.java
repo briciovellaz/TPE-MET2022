@@ -93,7 +93,7 @@ public class Responsable extends Profesional{
 
         }
     }
-    public void modificarDatos(){
+    public void modificarDatosMedico(int dni){
         //preguntar a quien deseo agregar datos, si es secretaria o medico
         //pedir dni
         //confirmar

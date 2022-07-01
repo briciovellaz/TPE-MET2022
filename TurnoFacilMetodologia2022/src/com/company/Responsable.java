@@ -22,8 +22,8 @@ public class Responsable extends Profesional{
         this.institucion = institucion;
     }
 
-    public void darDeAlta(){
-        Scanner teclado=new Scanner(System.in);
+    public void darDeAlta() {
+        Scanner teclado = new Scanner(System.in);
         System.out.println("funcion dar de alta a un medico o secretaria");
         //preguntar si desea dar de alta un medico o secretaria
         //pedir dni
@@ -61,7 +61,7 @@ public class Responsable extends Profesional{
         //pedir dni
         //confirmar
         // dar de baja al profesional
-        int opcion,DNI;
+        int opcion,DNI,index;
         String opcionText;
         System.out.println("ingrese 1 para dar de baja una secretaria y 2 para dar de baja un medico");
         opcion = teclado.nextInt();
@@ -76,7 +76,22 @@ public class Responsable extends Profesional{
             System.out.println("funcion cancelada");
             return;
         }
+        if(opcion ==1) {//dar de baja secretaria
+            index = institucion.buscarPosSecretaria(DNI);
+            Secretaria secretaria = (Secretaria) institucion.getProfesional(index,2);
+            System.out.println("Desea borrar la secretaria con los datos:");
+            System.out.println("dni: "+ secretaria.getDNI() +"/n nombre: " + secretaria.getNombre());
+            System.out.println("ingrese 1 para confirmar el borrado o 2 para cancelar");
+            opcion = teclado.nextInt();
+            if(opcion == 1){
+                institucion.darDeBajaMedico(index);
+                System.out.println("medico borrado");
+                return;
+            }
+        }
+        if(opcion == 2){// dar de baja medico
 
+        }
     }
     public void modificarDatos(){
         //preguntar a quien deseo agregar datos, si es secretaria o medico

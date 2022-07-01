@@ -39,6 +39,15 @@ public class Institucion {
         }
         return -1;
     }
+    public void darDeBajaMedico(int dni){
+        if(dni < medicos.size()){
+            int index = buscarPosMeadico(dni);
+            medicos.remove(index);
+        }
+    }
+    public boolean EsDNIResponsable(int DNI){
+        return (responsable.getDNI() == DNI);
+    }
 
     public void agregar(Secretaria secretaria){
         secretarias.add(secretaria);
@@ -50,7 +59,8 @@ public class Institucion {
         pacientes.add(paciente);
     }
     public void agregar(Responsable responsable){
-        responsable = responsable;
+        this.responsable = responsable;
+        responsable.setInstitucion(this);
     }
     public Profesional getProfesional(int index,int tipo) {
         switch (tipo){

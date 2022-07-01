@@ -18,7 +18,8 @@ public class InterfaceProfesional {
         //creo y completo institucion
         Institucion inst = new Institucion();
         Secretaria Esecretaria = new Secretaria("Maria Gimenez ","admin" , 50123123);
-
+        Responsable EResponsable = new Responsable("Luis Miguel","admin",10101010);
+        inst.agregar(EResponsable);
         Medico Emedico = new Medico("Juan Carlos","admin",50123124,"odontologo","6578");
         Esecretaria.agregarMedico(Emedico);
         Emedico.agregarHorario(0,LocalTime.of(9,0),LocalTime.of(12,0),20);
@@ -40,6 +41,8 @@ public class InterfaceProfesional {
         Emedico.agregarHorario(5,LocalTime.of(14,0),LocalTime.of(19,0),20);
         Emedico.agregarHorario(6,LocalTime.of(16,0),LocalTime.of(18,0),30);
         Esecretaria.agregarMedico(Emedico);
+
+
         //variables
         Scanner sn = new Scanner(System.in),teclado= new Scanner(System.in),sn2 = new Scanner(System.in);
         boolean passvalida = false,salir = false;
@@ -54,14 +57,15 @@ public class InterfaceProfesional {
             System.out.println("elija su rol");
             System.out.println("1. MEDICO");
             System.out.println("2. SECRETARIA");
-            System.out.println("3. Salir");
+            System.out.println("3. Responsable");
+            System.out.println("4. Salir");
 
             try {
 
                 opcion = sn.nextInt();
 
                 switch (opcion) {
-                    case 1:
+                    case 1://medico
                         do {
                             System.out.println("INGRESE SU DOCUMENTO");
                             DNI = sn2.nextInt();
@@ -90,7 +94,7 @@ public class InterfaceProfesional {
 
                         }
                         break;
-                    case 2:
+                    case 2://secretaria
                         do {
                             System.out.println("INGRESE SU DOCUMENTO");
                             DNI = sn2.nextInt();
@@ -117,21 +121,59 @@ public class InterfaceProfesional {
                                     break;
                                 }
                             } while(tries < 3 );
-
                         }
                         break;
-                    case 3:
+                    case 3: //responsable
                         //por implementar
+                        do {
+                            System.out.println("INGRESE SU DOCUMENTO");
+                            DNI = sn2.nextInt();
+                            tries++;
+                            if (!inst.EsDNIResponsable(DNI)) {
+                                System.out.println("EL DNI NO SE ENCUENTRA REGISTRADO");
+                                index =-1;
+                            }else {
+                                index = 1;
+                            }
+                        } while (index == -1 && tries < 3);
+                        tries = 0;
+                        if (index != -1) {
+                            do {
+                                System.out.println("INGRESE SU CONTRASEÑA");
+                                contrasenia = teclado.nextLine();
+                                passvalida = inst.validatePass(DNI,contrasenia,index,opcion);
+                                tries ++;
+                                if (!passvalida) {
+                                    System.out.println("LA CONTRASEÑA ES INCORRECTA");
+                                } else{
+                                    System.out.println("Inicio de sesion correcto");
+                                    sesionActiva = inst.getProfesional(index,opcion);
+                                    salir = true;
+                                    break;
+                                }
+                            } while(tries < 3 );
+                        }
+                        break;
+                    case 4 :
+                        System.out.println("programa terminado");
                         salir = true;
                         break;
                     default:
-                        System.out.println("Solo números entre 1 y 3");
+                        System.out.println("Solo números entre 1 y 4");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Debes insertar un número");
                 sn.next();
             }
         }
+
+        //menu de responsable
+        if(passvalida && opcion == 3){
+            System.out.println("Sesion iniciada como responsable");
+            System.out.println("Bienvenido " + sesionActiva.getNombre());
+        }
+
+
 
         //menu para secretaria si esta logueada correctamente
         if(passvalida && opcion ==2){

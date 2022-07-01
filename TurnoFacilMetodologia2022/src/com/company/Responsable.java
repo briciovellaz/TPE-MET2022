@@ -108,6 +108,12 @@ public class Responsable extends Profesional{
         System.out.println("ingrese el DNi "+opcionText+ " que desea agregarle datos");
 
     }
+
+    public void modificarDatosSecretaria(){
+        //
+
+    }
+
     public void asignarMedicosSecretarias(){
         //preguntar a que secretaria deseo asignar a un grupo de medicos
         //pedir dni de secretaria

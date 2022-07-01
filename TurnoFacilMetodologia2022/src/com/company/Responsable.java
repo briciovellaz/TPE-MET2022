@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Responsable extends Profesional{
@@ -28,15 +29,30 @@ public class Responsable extends Profesional{
         //pedir dni
         //confirmar
         //dar de alta al medico o secretaria
-        int opcion=0;
+        int opcion, DNI, index;
         String opcionText;
         System.out.println("ingrese 1 para dar de alta a una secretaria y 2 para dar de alta a un medico");
         opcion = teclado.nextInt();
-        if(opcion == 1){ opcionText = "de la secretaria";}else{ opcionText =" del medico";}
-        System.out.println("ingrese el DNi "+opcionText+ " que desea dar de alta");
+        if (opcion == 1) {
+            opcionText = "de la secretaria";
+        } else {
+            opcionText = " del medico";
+        }
+        System.out.println("ingrese el DNi " + opcionText + " que desea dar de alta");
+        boolean cancelar = false;
+        do {
+            System.out.println("ingrese el DNi " + opcionText + " que desea dar de alta o 0 cancelar operacion");
+            DNI = teclado.nextInt();
+            if (DNI == 0) {
+                cancelar = true;
+                break;
+            }
+        } while (!cancelar);
+        if (cancelar) {
+            System.out.println("funcion cancelada");
+            return;
 
-
-
+        }
     }
     public void darDeBaja(){
         Scanner teclado= new Scanner(System.in);
@@ -70,11 +86,11 @@ public class Responsable extends Profesional{
         Scanner teclado= new Scanner(System.in);
         int opcion =0;
         String opcionText;
+
         System.out.println("ingrese 1 para agregar datos a una secretaria y 2 para agregar datos a un medico");
         opcion = teclado.nextInt();
         if(opcion == 1){ opcionText = "de la secretatia";}else{ opcionText =" del medico";}
         System.out.println("ingrese el DNi "+opcionText+ " que desea agregarle datos");
-
 
     }
     public void asignarMedicosSecretarias(){
@@ -84,19 +100,26 @@ public class Responsable extends Profesional{
         //pedir dni de los medicos
         //confirmar
         //asignar secretaria a esos medicos ingresados
+        int cantidad = 0,DNI,index, i=1;
+        boolean cancelar = false;
         Scanner teclado= new Scanner(System.in);
         System.out.println("ingrese dni de secretaria");
-        int opcion,DNI;
-        String opcionText;
-        System.out.println("ingrese a cuantos medicos desea asignarle la secretaria que ingreso");
-        opcion = teclado.nextInt();
+        DNI = teclado.nextInt();
+        if(DNI == 0){cancelar = true;break;}
+        while (!cancelar);
+        if(cancelar){
+            System.out.println("funcion cancelada");
+            return;
+        System.out.println("ingrese a cuantos medicos desea asignarle la secretaria que se ingreso");
+        System.out.println(cantidad);
+        while (i>cantidad) {
+            System.out.println("ingrese dni de medico");
+            DNI = teclado.nextInt();
+            if (DNI == 0) {
+                cancelar = true;
+                break;
+            }
+            index = institucion.buscarPosMeadico(DNI);
+            Secretaria().agregar(medico);
+            i++;}
 
-
-        System.out.println("ingrese dni de los medicos");
-
-
-
-
-
-    }
-}

@@ -37,8 +37,9 @@ public class Institucion {
         }
         return -1;
     }
-    public int buscarPosMeadico(int dni){
-        for(int i = 0;i<medicos.size();i++){
+
+    public int buscarPosMedico(int dni) {
+        for (int i = 0; i < medicos.size(); i++) {
             if (medicos.get(i).validarDNI(dni))
                 return i;
         }
@@ -51,9 +52,10 @@ public class Institucion {
         }
         return -1;
     }
-    public void darDeBajaMedico(int dni){
-        if(dni < medicos.size()){
-            int index = buscarPosMeadico(dni);
+
+    public void darDeBajaMedico(int dni) {
+        if (dni < medicos.size()) {
+            int index = buscarPosMedico(dni);
             medicos.remove(index);
         }
     }
@@ -61,7 +63,7 @@ public class Institucion {
         return (responsable.getDNI() == DNI);
     }
 
-    public void agregar(Secretaria secretaria){
+    public void agregar(Secretaria secretaria) {
         secretarias.add(secretaria);
     }
     public void agregar(Medico medico){

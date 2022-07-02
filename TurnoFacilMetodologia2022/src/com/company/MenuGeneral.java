@@ -19,6 +19,7 @@ public class MenuGeneral {
         String contrasenia;
 
         /////////lineas para sistema inicio de sesion
+    public void IniciarMenu() {
         while (!salir) {
 
             System.out.println("---Bienvenido al sistema de turnoFacil para profesionales de la salud---");
@@ -55,18 +56,19 @@ public class MenuGeneral {
                             do {
                                 System.out.println("INGRESE SU CONTRASEÑA");
                                 contrasenia = teclado.nextLine();
-                                passvalida = inst.validatePass(DNI,contrasenia,index,opcion);
-                                tries ++;
-                                if (!passvalida) {
-                                    System.out.println("LA CONTRASEÑA ES INCORRECTA");
-                                } else{
+                                if (institucion.logIn(contrasenia, DNI, "s") != null){
                                     System.out.println("Inicio de sesion correcto");
-                                    sesionActiva = inst.getProfesional(index,opcion);
+                                    new MenuSecretaria((Secretaria)institucion.logIn(contrasenia, DNI, "s")).menu();
                                     salir = true;
                                     break;
                                 }
-                            } while(tries < 3 );
-                        }
+                                else {
+                                    System.out.println("USUARIO Y/O CONTRASEÑA INCORRECTOS");
+                                    tries++;
+                                }
+
+                            } while (tries < 3);
+
                         break;
                     case 3: { //responsable
                         //por implementar
@@ -87,7 +89,8 @@ public class MenuGeneral {
                             }
                         } while (tries < 3);
                         break;
-                    case 4 :
+                    }
+                    case 4:
                         System.out.println("programa terminado");
                         salir = true;
                         break;

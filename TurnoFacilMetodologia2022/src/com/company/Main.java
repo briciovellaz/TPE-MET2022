@@ -29,6 +29,20 @@ public class Main {
         Paciente paciente5 = new Paciente(19091027,"Cha","Yanne","PAMI");
         inst.agregar(paciente);
         inst.agregar(Emedico);
+
+        Esecretaria.asignarTurno(paciente,Emedico,LocalDate.of(2009,02,23),LocalTime.of(10,0));
+        Esecretaria.asignarTurno(paciente2,Emedico,LocalDate.of(2009,02,23),LocalTime.of(10,0));
+        Esecretaria.asignarTurno(paciente2,Emedico,LocalDate.of(2009,02,23),LocalTime.of(10,30));
+        Esecretaria.asignarTurno(paciente2,Emedico,LocalDate.of(2009,02,23),LocalTime.of(13,0));
+        Esecretaria.asignarTurno(paciente3,Emedico,LocalDate.of(2009,02,23),LocalTime.of(11,0));
+        Esecretaria.asignarTurno(paciente4,Emedico,LocalDate.of(2009,02,23),LocalTime.of(9,30));
+
+        Esecretaria.asignarTurno(paciente,Emedico,LocalDate.of(2020,02,23),LocalTime.of(15,0));
+        Esecretaria.asignarTurno(paciente2,Emedico,LocalDate.of(2021,02,23),LocalTime.of(17,0));
+        Esecretaria.asignarTurno(paciente2,Emedico,LocalDate.of(2022,02,23),LocalTime.of(18,0));
+        Esecretaria.asignarTurno(paciente3,Emedico,LocalDate.of(2019,02,23),LocalTime.of(14,0));
+        Esecretaria.asignarTurno(paciente4,Emedico,LocalDate.of(2009,02,23),LocalTime.of(19,30));
+
         Emedico = new Medico("Pepe Argento","admin",50123125,"pediatra","3536","---","---","---","---",-1,inst);
         Emedico.agregarHorario(0,LocalTime.of(14,0),LocalTime.of(19,0),20);
         Emedico.agregarHorario(1,LocalTime.of(14,0),LocalTime.of(19,0),20);
@@ -38,6 +52,7 @@ public class Main {
         Emedico.agregarHorario(5,LocalTime.of(14,0),LocalTime.of(19,0),20);
         Emedico.agregarHorario(6,LocalTime.of(16,0),LocalTime.of(18,0),30);
         Esecretaria.agregarMedico(Emedico);
+
 
         MenuGeneral menu = new MenuGeneral(inst);
         menu.IniciarMenu();

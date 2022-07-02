@@ -77,6 +77,7 @@ public class Medico extends Profesional{
 
     public ArrayList<Turno> listarTurnos(int dia){//lista todos los turnos de un dia
         ArrayList<Turno> turnos = new ArrayList<>();
+        turnos.addAll(horario.listarTurnos());
         for(Horario horario: horarios[dia] ){
             turnos.addAll(horario.listarTurnos());
         }

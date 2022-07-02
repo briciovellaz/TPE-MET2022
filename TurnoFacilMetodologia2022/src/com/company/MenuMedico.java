@@ -73,6 +73,7 @@ public class MenuMedico extends MenuProfesional {
                         for(Turno t : medico.listarTurnos(diaNumero, new FilterByShift("Maniana", 0, 12))){
                             System.out.println(t.getFecha().toString() + " " + t.getHoraInicio().toString()
                                     + "  Paciente: " + t.getPaciente().getNombre() + " DNI " + t.getPaciente().getDNI());
+                        }
                         break;
                     }
                     case 2: {

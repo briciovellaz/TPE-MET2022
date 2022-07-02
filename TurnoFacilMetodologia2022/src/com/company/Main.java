@@ -22,7 +22,12 @@ public class Main {
         Emedico.agregarHorario(5,LocalTime.of(9,0),LocalTime.of(12,0),20);
         Emedico.agregarHorario(6,LocalTime.of(9,0),LocalTime.of(12,0),20);
         inst.agregar(Esecretaria);
-        inst.agregar(new Paciente(12345678,"Abel","Pintos","yoTecuido"));
+        Paciente paciente = new Paciente(12345000,"Abel","Pintos","yoTecuido");
+        Paciente paciente2 = new Paciente(12345001,"Maria","Garcia","yoTecuido");
+        Paciente paciente3 = new Paciente(40462573,"Melanie","Pugni","IOMA");
+        Paciente paciente4 = new Paciente(43186121,"Noelia","Denk","IOMA");
+        Paciente paciente5 = new Paciente(19091027,"Cha","Yanne","PAMI");
+        inst.agregar(paciente);
         inst.agregar(Emedico);
         Emedico = new Medico("Pepe Argento","admin",50123125,"pediatra","3536","---","---","---","---",-1,inst);
         Emedico.agregarHorario(0,LocalTime.of(14,0),LocalTime.of(19,0),20);

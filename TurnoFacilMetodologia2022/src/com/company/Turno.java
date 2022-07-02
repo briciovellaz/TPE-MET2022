@@ -47,6 +47,7 @@ public class Turno{
 
     /*public LocalTime getHoraFin() {
         return horaFin;
+        //
     }*/
 
     public int getDuracion() {

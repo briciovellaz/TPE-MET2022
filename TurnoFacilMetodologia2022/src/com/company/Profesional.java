@@ -28,13 +28,14 @@ public abstract class Profesional {
         this.nroTelefono = nro;
     }
 
+    public Institucion getInstitucion(){ return this.institucion;}
     public String getNombre() {
         return nombre;
     }
 
-    public int getDNI() {
-        return DNI;
-    }
+    public void setNombre(String nombre){ this.nombre = nombre;}
+
+    public int getDNI() {return DNI;}
 
     public String getDomicilio() { return domicilio;}
 

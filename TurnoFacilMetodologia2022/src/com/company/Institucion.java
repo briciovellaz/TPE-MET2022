@@ -9,13 +9,25 @@ public class Institucion {
     private List<Secretaria> secretarias = new ArrayList<>();
     private Responsable responsable;
 
-    public Institucion(){}
-    public boolean validatePass(int DNI,String password, int index,int tipo){
-        switch (tipo){
-            case 1: return medicos.get(index).validarContrasenia(DNI,password);
-            case 2: return secretarias.get(index).validarContrasenia(DNI,password);
-            case 3: return responsable.validarContrasenia(DNI,password);
-            default: return false;
+    public Institucion() {
+    }
+
+    public Profesional validatePass(int DNI, String password, int index, int tipo) {
+        switch (tipo) {
+            case 1:
+                if (medicos.get(index).validarContrasenia(DNI, password))
+                    return medicos.get(index);
+                else return null;
+            case 2:
+                if (secretarias.get(index).validarContrasenia(DNI, password))
+                    return secretarias.get(index);
+                else return null;
+            case 3:
+                if (responsable.validarContrasenia(DNI, password))
+                    return responsable;
+                else return null;
+            default:
+                return null;
         }
     }
     public int buscarPosPaciente(int dni){

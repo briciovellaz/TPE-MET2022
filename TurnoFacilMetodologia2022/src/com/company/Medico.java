@@ -97,18 +97,13 @@ public class Medico extends Profesional{
         return especialidad;
     }
 
-    public void borrarHorario(int dia, int indice){
-        if(dia < 7 && dia > -1 && indice< horarios[dia].size() && indice > -1) {
-            horarios[dia].remove(indice);
-        }
+    public void setMatricula(String matricula){ this.matricula = matricula;}
+
+    public void setObraSocial(String obS){
+        if(!obrasSociales.contains(obS))
+            this.obrasSociales.add(obS);
     }
-
-    /*public Medico(String nombre, String especialidad, String contrasenia,int dni, String matricula) {
-        super(nombre, contrasenia,dni);
-        this.especialidad = especialidad;
-        this.matricula=matricula;
-    }*/
-
+    public void setEspecialidad(String esp){ this.especialidad = esp;}
     public String getMatricula() {
         return matricula;
     }

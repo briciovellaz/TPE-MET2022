@@ -29,7 +29,7 @@ public class Secretaria extends Profesional{
         return salida;
     }
 
-        public List<Turno> listarTurnos(int dia,Filter f){
+    public List<Turno> listarTurnos(int dia,Filter f){
         List<Turno> salida=new ArrayList<>();
         for(Medico m: medicos){
             for(int i=0;i<=7;i++){

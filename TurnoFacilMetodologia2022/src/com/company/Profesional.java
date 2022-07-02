@@ -41,11 +41,28 @@ public abstract class Profesional {
 
     public String getDomicilio() { return domicilio;}
 
-    public String getEspecialidad() { return curriculum;}
+    public void setDomicilio(String domicilio){ this.domicilio=domicilio;}
+
+    public String getCurriculum() { return curriculum;}
+
+    public void setCurriculum(String Curriculum){ this.curriculum=Curriculum;}
 
     public String getDescripcionPersonal(){ return descripcionPersonal;}
 
+    public void setDescripcionPersonal(String descripcion){ this.descripcionPersonal=descripcion;}
+
     public String getEmail(){ return email;}
 
+    public void setEmail(String email){ this.email= email; }
+
     public int getNroTelefono() { return nroTelefono;}
+
+    public void setNroTelefono(int nroTelefono){ this.nroTelefono=nroTelefono; }
+
+    public void modificarContrasenia(String nueva){
+            this.contrasenia = nueva;
+    }
+
+
+
 }

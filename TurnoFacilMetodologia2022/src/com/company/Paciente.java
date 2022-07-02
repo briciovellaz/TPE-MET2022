@@ -20,16 +20,22 @@ public class Paciente {
         return DNI;
     }
 
-    public void agregarTurno(Turno turno){
-        turnos.add(turno);
+    public String getNombre() {
+        return nombre;
     }
+
+    public void agregarTurno(Turno turno){ turnos.add(turno); }
+
     public ArrayList<Turno> listarTurnos(){
         return new ArrayList<>(turnos);
     }
+
     public void borrarTurno(int index){
         turnos.remove(index);
     }
+
     public Turno getTurno(int index){return turnos.get(index);}
+
     public void cancelarTurno(Turno t){
         int i;
         for(i=0; i<turnos.size(); i++){

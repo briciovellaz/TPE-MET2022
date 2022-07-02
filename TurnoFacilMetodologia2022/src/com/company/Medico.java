@@ -27,9 +27,11 @@ public class Medico extends Profesional{
         }
     }
 
+
     public Horario getHorario(int dia){
         return horarios[dia].get(dia);
     }
+
     public void agregarHorario(int dia,LocalTime inicio,LocalTime fin,int duracionTurno){
        Horario horario = new Horario(inicio,fin,duracionTurno);
        horarios[dia].add(horario);
@@ -108,6 +110,11 @@ public class Medico extends Profesional{
         return matricula;
     }
 
+    public void borrarHorario(int dia, int indice){
+        if(dia < 7 && dia > -1 && indice< horarios[dia].size() && indice > -1) {
+            horarios[dia].remove(indice);
+        }
+    }
     @Override
     public boolean equals(Object obj) {
         try{

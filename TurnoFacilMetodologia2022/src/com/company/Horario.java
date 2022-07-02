@@ -48,7 +48,7 @@ public class Horario {
     }
     public ArrayList<Turno> listarTurnos(){return new ArrayList<>(turnos); }//devuelve lista de turnos
 
-         public ArrayList<Turno> listarTurnos(Filter f){
+    public ArrayList<Turno> listarTurnos(Filter f){
         ArrayList<Turno> salida=new ArrayList<>();
         for(Turno t:turnos){
             if (f.evaluar(t)) {

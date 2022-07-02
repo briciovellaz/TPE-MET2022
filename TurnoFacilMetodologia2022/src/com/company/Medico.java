@@ -18,8 +18,8 @@ public class Medico extends Profesional{
     private ArrayList<Horario> horarios[] = new ArrayList[7]; // 0 = lunes
 
 
-    public Medico(String nombre,String contraseña,int DNI,String especialidad,String matricula){
-        super(nombre,contraseña,DNI);
+    public Medico(String nombre,String contraseña,int DNI,String especialidad, String matricula, String domicilio,String curriculum, String descripcion, String email, int nroTel){
+        super(nombre,contraseña,DNI, domicilio,curriculum, descripcion, email, nroTel);
         this.especialidad = especialidad;
         this.matricula = matricula;
         for (int i =0;i<7;i++){

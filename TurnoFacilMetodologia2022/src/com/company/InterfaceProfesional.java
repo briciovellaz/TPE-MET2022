@@ -17,10 +17,10 @@ public class InterfaceProfesional {
     public static void main(String[] args) {
         //creo y completo institucion
         Institucion inst = new Institucion();
-        Secretaria Esecretaria = new Secretaria("Maria Gimenez ","admin" , 50123123);
-        Responsable EResponsable = new Responsable("Luis Miguel","admin",10101010);
+        Secretaria Esecretaria = new Secretaria("Maria Gimenez ","admin" , 50123123,"---","---","---","---","---","---",-1);
+        Responsable EResponsable = new Responsable("Luis Miguel","admin",10101010,"---","---","---","---","---","---",-1);
         inst.agregar(EResponsable);
-        Medico Emedico = new Medico("Juan Carlos","admin",50123124,"odontologo","6578");
+        Medico Emedico = new Medico("Juan Carlos","admin",50123124,"odontologo","6578","---","---","---","---",-1);
         Esecretaria.agregarMedico(Emedico);
         Emedico.agregarHorario(0,LocalTime.of(9,0),LocalTime.of(12,0),20);
         Emedico.agregarHorario(1,LocalTime.of(9,0),LocalTime.of(12,0),20);
@@ -32,7 +32,7 @@ public class InterfaceProfesional {
         inst.agregar(Esecretaria);
         inst.agregar(new Paciente(12345678,"Abel","Pintos","yoTecuido"));
         inst.agregar(Emedico);
-        Emedico = new Medico("Pepe Argento","admin",50123125,"pediatra","3536");
+        Emedico = new Medico("Pepe Argento","admin",50123125,"pediatra","3536","---","---","---","---",-1);
         Emedico.agregarHorario(0,LocalTime.of(14,0),LocalTime.of(19,0),20);
         Emedico.agregarHorario(1,LocalTime.of(14,0),LocalTime.of(19,0),20);
         Emedico.agregarHorario(2,LocalTime.of(14,0),LocalTime.of(19,0),20);
@@ -87,7 +87,8 @@ public class InterfaceProfesional {
                                 }else{
                                     System.out.println("Inicio de sesion correcto, bienvenido");
                                     sesionActiva = inst.getProfesional(index,opcion);
-                                    salir = true;
+
+                                //salir = true;
                                     break;
                                 }
                             } while(tries < 3 );

@@ -10,8 +10,8 @@ import java.util.List;
 public class Secretaria extends Profesional{
     private ArrayList<Medico> medicos = new ArrayList<Medico>();
 
-    public Secretaria(String nombre, String contrasenia,int dni){
-        super(nombre,contrasenia,dni);
+    public Secretaria(String nombre, String contrasenia,int dni,String especialidad, String matricula, String domicilio,String curriculum, String descripcion, String email, int nroTel){
+        super(nombre,contrasenia,dni, domicilio,curriculum, descripcion, email, nroTel);
     }
 
     public void agregarMedico(Medico m){

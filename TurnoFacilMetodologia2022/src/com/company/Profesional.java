@@ -4,7 +4,7 @@ public abstract class Profesional {
     private String nombre,contrasenia; //DNI se usara como idenficador de usuario
     private int DNI;
     private String domicilio;
-    private String especialidad;
+    private String curriculum;
     private String descripcionPersonal;
     private String email;
     private int nroTelefono;

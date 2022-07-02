@@ -30,8 +30,9 @@ public class Institucion {
                 return null;
         }
     }
-    public int buscarPosPaciente(int dni){
-        for(int i = 0;i<pacientes.size();i++){
+
+    public int buscarPosPaciente(int dni) {
+        for (int i = 0; i < pacientes.size(); i++) {
             if (pacientes.get(i).getDNI() == dni)
                 return i;
         }
@@ -45,8 +46,9 @@ public class Institucion {
         }
         return -1;
     }
-    public int buscarPosSecretaria(int dni){
-        for(int i = 0;i<secretarias.size();i++){
+
+    public int buscarPosSecretaria(int dni) {
+        for (int i = 0; i < secretarias.size(); i++) {
             if (secretarias.get(i).validarDNI(dni))
                 return i;
         }
@@ -59,33 +61,52 @@ public class Institucion {
             medicos.remove(index);
         }
     }
-    public boolean EsDNIResponsable(int DNI){
+
+    public boolean EsDNIResponsable(int DNI) {
         return (responsable.getDNI() == DNI);
     }
 
     public void agregar(Secretaria secretaria) {
         secretarias.add(secretaria);
     }
-    public void agregar(Medico medico){
+
+    public void agregar(Medico medico) {
         medicos.add(medico);
     }
-    public void agregar(Paciente paciente){
+
+    public void agregar(Paciente paciente) {
         pacientes.add(paciente);
     }
-    public void agregar(Responsable responsable){
+
+    public void agregar(Responsable responsable) {
         this.responsable = responsable;
-        responsable.setInstitucion(this);
     }
-    public Profesional getProfesional(int index,int tipo) {
-        switch (tipo){
-            case 1: return medicos.get(index);
-            case 2: return secretarias.get(index);
-            case 3: return responsable;
-            default: return responsable;
+
+    public Profesional getProfesional(int index, int tipo) {
+        switch (tipo) {
+            case 1:
+                return medicos.get(index);
+            case 2:
+                return secretarias.get(index);
+            case 3:
+                return responsable;
+            default:
+                return responsable;
         }
     }
 
     public Paciente getPaciente(int index) {
         return pacientes.get(index);
     }
+
+    public Profesional logIn(String password, int dni, String s) {
+        if (s.equals("m"))
+            return validatePass(dni, password, this.buscarPosMedico(dni), 1);
+        if (s.equals("s"))
+            return validatePass(dni, password, this.buscarPosSecretaria(dni), 2);
+        if (s.equals("r"))
+            return validatePass(dni, password, 0, 3);
+        return null;
+    }
+
 }

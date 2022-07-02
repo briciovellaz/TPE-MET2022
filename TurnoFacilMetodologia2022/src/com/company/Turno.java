@@ -9,7 +9,7 @@ public class Turno{
     private LocalDate fecha;
     private LocalTime horaInicio;
     //private LocalTime horaFin;
-    private int duracion;
+    private long duracion;
     public boolean estaLibre(){
         return (paciente == null);
     }
@@ -50,11 +50,11 @@ public class Turno{
         //
     }*/
 
-    public int getDuracion() {
+    public long getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(long duracion) {
         this.duracion = duracion;
     }
 

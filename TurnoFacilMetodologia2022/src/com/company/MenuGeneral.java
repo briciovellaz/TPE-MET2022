@@ -12,12 +12,17 @@ import java.util.Scanner;
 
 public class MenuGeneral {
         //variables
-        Scanner sn = new Scanner(System.in),teclado= new Scanner(System.in),sn2 = new Scanner(System.in);
-        boolean passvalida = false,salir = false;
-        int opcion = 0,DNI,index=0,tries = 0;
-        Profesional sesionActiva = null;
-        String contrasenia;
+   private Scanner sn = new Scanner(System.in),teclado= new Scanner(System.in),sn2 = new Scanner(System.in);
+   private boolean passvalida = false,salir = false;
+   private int opcion = 0,DNI,index=0,tries = 0;
+   private Profesional sesionActiva = null;
+   private String contrasenia;
+   private Institucion institucion;
 
+   public MenuGeneral(Institucion institucion) {
+       this.institucion = institucion;
+   }
+       
         /////////lineas para sistema inicio de sesion
     public void IniciarMenu() {
         while (!salir) {
@@ -54,6 +59,8 @@ public class MenuGeneral {
                         break;
                     case 2://secretaria
                             do {
+                                System.out.println("INGRESE SU DOCUMENTO");
+                                DNI = sn2.nextInt();
                                 System.out.println("INGRESE SU CONTRASEÑA");
                                 contrasenia = teclado.nextLine();
                                 if (institucion.logIn(contrasenia, DNI, "s") != null){

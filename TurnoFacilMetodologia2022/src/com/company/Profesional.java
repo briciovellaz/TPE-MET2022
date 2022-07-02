@@ -8,6 +8,7 @@ public abstract class Profesional {
     private String descripcionPersonal;
     private String email;
     private int nroTelefono;
+    private Institucion institucion;
     //consulta DNI si es igual devuelve true
     public boolean validarDNI(int DNI){
         return (DNI == this.DNI);
@@ -17,7 +18,7 @@ public abstract class Profesional {
         return contrasenia.equals(this.contrasenia)&& this.DNI == DNI;
     }
 
-    public Profesional(String nombre, String contrasenia, int dni, String domicilio, String especialidad, String des, String mail, int nro){
+    public Profesional(String nombre, String contrasenia, int dni, String domicilio, String especialidad, String des, String mail, int nro,Institucion inst){
         this.nombre=nombre;
         this.contrasenia=contrasenia;
         this.DNI=dni;
@@ -26,6 +27,7 @@ public abstract class Profesional {
         this.descripcionPersonal = des;
         this.email = mail;
         this.nroTelefono = nro;
+        this.institucion = inst;
     }
 
     public Institucion getInstitucion(){ return this.institucion;}

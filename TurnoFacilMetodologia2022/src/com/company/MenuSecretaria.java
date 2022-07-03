@@ -16,7 +16,10 @@ public class MenuSecretaria extends MenuProfesional {
         this.secretaria = secretaria;
     }
 
-
+    @Override
+    protected void otrasOpciones() {
+        System.out.println("Secretaria no tiene otras opciones disponibles");
+    }
 
     @Override
     public void menu() {
@@ -302,9 +305,4 @@ public class MenuSecretaria extends MenuProfesional {
         }
 
     }
-
-    public void modificarDatosSec(){
-
-    }
-
 }

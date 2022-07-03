@@ -10,6 +10,8 @@ public abstract class MenuProfesional {
     }
     public abstract void menu();
 
+    protected abstract void otrasOpciones();
+
     public boolean modificarDatosProf(Profesional p) {
         //pedir dni
         //confirmar
@@ -41,7 +43,7 @@ public abstract class MenuProfesional {
                     System.out.println("1-Modificar nombre");
                     System.out.println("Ingrese el nuevo nombre");
                     String nuevoNombre;
-                    nuevoNombre = sn.nextLine();
+                    nuevoNombre = sn.next();
                     p.setNombre(nuevoNombre);
                     break;
                 }
@@ -54,13 +56,6 @@ public abstract class MenuProfesional {
                     break;
                 }
                 case 3: {
-                    System.out.println("2-Modificar contraseña");
-                    System.out.println("Ingrese la nueva contraseña");
-                    String nuevaContra = sn.nextLine();
-                    p.modificarContrasenia(nuevaContra);
-                    break;
-                }
-                case 4: {
                     System.out.println("3-Modificar domicilio");
                     System.out.println("Ingrese el nuevo domicilio");
                     String nuevoDom = sn.nextLine();
@@ -70,7 +65,7 @@ public abstract class MenuProfesional {
                 case 5: {
                     System.out.println("4-Agregar datos al curriculum");
                     System.out.println("Ingrese el nuevo dato del curriculum");
-                    String nuevoCur = sn.nextLine();
+                    String nuevoCur = sn.next();
                     p.setCurriculum(nuevoCur);
                     break;
                 }

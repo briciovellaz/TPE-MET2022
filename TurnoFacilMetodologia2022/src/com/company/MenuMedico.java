@@ -14,6 +14,11 @@ public class MenuMedico extends MenuProfesional {
     }
 
     @Override
+    protected void otrasOpciones() {
+        modificarDatosMed();
+    }
+
+    @Override
     public void menu() {
         boolean salir = false;
         while (!salir) {

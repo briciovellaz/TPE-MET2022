@@ -62,6 +62,13 @@ public class Institucion {
         }
     }
 
+    public void darDeBajaSecretaria(int dni) {
+        if (dni < medicos.size()) {
+            int index = buscarPosSecretaria(dni);
+            secretarias.remove(index);
+        }
+    }
+
     public boolean EsDNIResponsable(int DNI) {
         return (responsable.getDNI() == DNI);
     }

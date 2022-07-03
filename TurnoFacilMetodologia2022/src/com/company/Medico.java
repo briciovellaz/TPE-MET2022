@@ -15,7 +15,7 @@ import java.util.Map;
 public class Medico extends Profesional{
     private String especialidad,matricula;
     private ArrayList<String> obrasSociales = new ArrayList<>();
-    private ArrayList<Horario> horarios[] = new ArrayList[6]; // 0 = lunes
+    private ArrayList<Horario> horarios[] = new ArrayList[7]; // 0 = lunes
 
 
     public Medico(String nombre,String contraseña,int DNI,String especialidad, String matricula, String domicilio,String curriculum, String descripcion, String email, int nroTel,Institucion inst){
@@ -75,14 +75,17 @@ public class Medico extends Profesional{
         }
     }   */
 
+
+
     public ArrayList<Turno> listarTurnos(int dia){//lista todos los turnos de un dia
         ArrayList<Turno> turnos = new ArrayList<>();
-        turnos.addAll(horario.listarTurnos());
         for(Horario horario: horarios[dia] ){
             turnos.addAll(horario.listarTurnos());
         }
         return turnos;
     }
+
+
 
     public ArrayList<Turno> listarTurnos(int dia, Filter f){//lista todos los turnos de un dia filtrados por franja horaria
         ArrayList<Turno> turnos = new ArrayList<>();

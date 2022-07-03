@@ -55,10 +55,12 @@ public class MenuResponsable extends MenuProfesional {
         }
     }
 
-
+        //modifica datos a si mismo no se ve en menu
     public void modificarDatosResp(){ this.modificarDatosProf(this.responsable) ;}
 
-    public void darDeBaja() {//opcion del menu dar de baja un medico o secretaria
+
+    //funciona correctamente
+    private void darDeBaja() {//opcion del menu dar de baja un medico o secretaria
         Scanner teclado = new Scanner(System.in);
         System.out.println("Funcion dar de baja");
         //preguntar si desea dar de baja medico o secretaria
@@ -82,6 +84,7 @@ public class MenuResponsable extends MenuProfesional {
             DNI = teclado.nextInt();
             if(opcion==1){
                 index = institucion.buscarPosSecretaria(DNI); // si no existe dni ==> retorna -1
+                System.out.println("index posSEcret" + index);
             }else{
                 index = institucion.buscarPosMedico(DNI); //same
             }
@@ -105,7 +108,7 @@ public class MenuResponsable extends MenuProfesional {
                 System.out.println("ingrese 1 para confirmar el borrado o 2 para cancelar");
                 opcion = teclado.nextInt();
                 if (opcion == 1) {
-                    institucion.darDeBajaSecretaria(index);
+                    institucion.darDeBajaSecretaria(DNI);
                     System.out.println("Secretaria borrada con exito");
                     //return; ???
                 }
@@ -113,12 +116,12 @@ public class MenuResponsable extends MenuProfesional {
                 if (opcion == 2) {// dar de baja medico
                     //index = institucion.buscarPosMedico(DNI); LO SUBI AL DO{}WHILE();
                     Medico medico = (Medico) institucion.getProfesional(index, 1);
-                    System.out.println("Desea borrar la secretaria con los datos:");
-                    System.out.println("dni: " + medico.getDNI() + "/n matricula:" + medico.getMatricula() + "/n nombre: " + medico.getNombre() + "/n especialidad:" + medico.getEspecialidad() + "/n obras Sociales: " + medico.getObrasSociales());
+                    System.out.println("Desea borrar el medico con los datos:");
+                    System.out.println("dni: " + medico.getDNI() + "\n matricula:" + medico.getMatricula() + "\n nombre: " + medico.getNombre() + "\n especialidad:" + medico.getEspecialidad() + "\n obras Sociales: " + medico.getObrasSociales());
                     System.out.println("ingrese 1 para confirmar el borrado o 2 para cancelar");
                     opcion = teclado.nextInt();
                     if (opcion == 1) {
-                        institucion.darDeBajaMedico(index);
+                        institucion.darDeBajaMedico(DNI);
                         System.out.println("Medico borrado con exito");
                         //return; ???
                     }
@@ -126,7 +129,7 @@ public class MenuResponsable extends MenuProfesional {
             }
         }
     }
-    public void darDeAlta() {
+    private void darDeAlta() {//funciona correctamente
         Scanner teclado = new Scanner(System.in);
         System.out.println("funcion dar de alta a un medico o secretaria");
         //preguntar si desea dar de alta un medico o secretaria
@@ -153,7 +156,7 @@ public class MenuResponsable extends MenuProfesional {
             }
         } while (!cancelar); /// creo que no termina
         */
-
+        ///estaria bueno comprobar que no existe desde antes el DNI
         System.out.println("ingrese el DNi " + opcionText + " que desea dar de alta o 0 cancelar operacion");
         DNI = teclado.nextInt();
         if (DNI == 0)
@@ -164,11 +167,11 @@ public class MenuResponsable extends MenuProfesional {
             return;
         }else{
             System.out.println("Ingresar los datos personales del nuevo Recluta :");
-            System.out.println("Nombre:");
-            String nombre=teclado.nextLine();
-            System.out.println("Contrasenia:");
-            String contrasenia=teclado.nextLine();
-            System.out.println("DNI:");
+            System.out.println("Nombre:  ");
+            String nombre=teclado.next();
+            System.out.println("Contrasenia: ");
+            String contrasenia=teclado.next();
+            System.out.println("DNI: ");
             int dni= teclado.nextInt();
             System.out.println("Especialidad:");
             String especialidad=teclado.nextLine();
@@ -191,13 +194,12 @@ public class MenuResponsable extends MenuProfesional {
             } else {
                 Medico m=new Medico(nombre,contrasenia,dni,especialidad,matricula,domicilio,curriculum,descripcion,mail,nroTel,institucion);
                 institucion.agregar(m);
-                opcionText = " del medico";
             }
         }
 
 
     }
-    public void modificarDatosProfesional(Profesional p) {
+    private void modificarDatosProfesional() {
         //preguntar a quien deseo agregar datos, si es secretaria o medico
         //pedir dni
         //confirmar
@@ -210,7 +212,7 @@ public class MenuResponsable extends MenuProfesional {
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
         String opcionText;
-        System.out.println("ingrese 1 para agregar datos a una secretaria y 2 para agregar datos a un medico");
+        System.out.println("ingrese 1 para modificar datos a una secretaria y 2 para agregar datos a un medico");
         opcion = teclado.nextInt();
 
         if (opcion == 1) {
@@ -224,9 +226,9 @@ public class MenuResponsable extends MenuProfesional {
         if (opcionText == "del medico") {
 
             while (index != -1 && !cancel) {
-                System.out.println("ingrese el DNi " + opcionText + " que desea dar de baja o 0 cancelar operacion");
+                System.out.println("ingrese el DNi " + opcionText + " que desea modificar");
                 DNI = teclado.nextInt();
-                index = institucion.buscarPosSecretaria(DNI);
+                index = institucion.buscarPosMedico(DNI);
                 if (index != -1)
                     break;
                 System.out.println("El DNI ingresado es incorrecto");
@@ -263,8 +265,11 @@ public class MenuResponsable extends MenuProfesional {
                     System.out.println("El DNI ingresado es incorrecto");
                     System.out.println("Intentelo nuevamente (Si desea cancelar la operacion presione 0) ");
                     opcion = teclado.nextInt();
-                    if (opcion == 0)
+                    if (opcion == 0) {
                         cancel = true;
+                        System.out.println("funcion cancelada");
+                        return;
+                    }
                 }
                 if (!cancel && index != -1) {
                     Profesional p = institucion.getProfesional(index, 2);
@@ -281,10 +286,11 @@ public class MenuResponsable extends MenuProfesional {
                 }*/
                 }
             }
+            }
         }
     }
 
-    public void asignarMedicosSecretarias() {
+    private void asignarMedicosSecretarias() {
         //preguntar a qué secretaria deseo asignar a un grupo de medicos
         //pedir dni de secretaria
         //preguntar a cuantos medicos desea asignarles esa secretaria

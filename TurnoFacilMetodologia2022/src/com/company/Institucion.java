@@ -15,15 +15,15 @@ public class Institucion {
     public Profesional validatePass(int DNI, String password, int index, int tipo) {
         switch (tipo) {
             case 1:
-                if (medicos.get(index).validarContrasenia(DNI, password))
+                if (index !=-1 && medicos.get(index).validarContrasenia(DNI, password))
                     return medicos.get(index);
                 else return null;
             case 2:
-                if (secretarias.get(index).validarContrasenia(DNI, password))
+                if (index !=-1 && secretarias.get(index).validarContrasenia(DNI, password))
                     return secretarias.get(index);
                 else return null;
             case 3:
-                if (responsable.validarContrasenia(DNI, password))
+                if (index !=-1 && responsable.validarContrasenia(DNI, password))
                     return responsable;
                 else return null;
             default:
@@ -63,9 +63,9 @@ public class Institucion {
     }
 
     public void darDeBajaSecretaria(int dni) {
-        if (dni < medicos.size()) {
-            int index = buscarPosSecretaria(dni);
-            secretarias.remove(index);
+        int index = buscarPosSecretaria(dni);
+        if (index < secretarias.size() && index!=-1) {
+           secretarias.remove(index);
         }
     }
 

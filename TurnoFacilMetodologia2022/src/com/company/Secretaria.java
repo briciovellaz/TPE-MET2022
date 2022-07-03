@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.filters.Filter;
+import com.company.filters.FilterTrue;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -23,7 +24,7 @@ public class Secretaria extends Profesional{
         List<Turno> salida=new ArrayList<>();
         for(Medico m: medicos){
             for(int i=0;i<=7;i++){
-            salida.addAll(m.listarTurnos(i));
+            salida.addAll(m.listarTurnos(i,new FilterTrue()));
             }
         }
         return salida;

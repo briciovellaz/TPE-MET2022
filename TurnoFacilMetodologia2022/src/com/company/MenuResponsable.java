@@ -37,7 +37,7 @@ public class MenuResponsable extends MenuProfesional {
                    break;
                 }
                 case 3:{ ///Le falta un poco
-                    //modificarDatosProfesional();
+                    modificarDatosProfesional();
                     System.out.println("Se modificaron de forma correcta los datos");
                     break;
                 }
@@ -103,7 +103,7 @@ public class MenuResponsable extends MenuProfesional {
                 //index = institucion.buscarPosSecretaria(DNI); LO SUBI AL DO{}WHILE();
                 Secretaria secretaria = (Secretaria) institucion.getProfesional(index, 2);
                 System.out.println("Desea borrar la secretaria con los datos:");
-                System.out.println("dni: " + secretaria.getDNI() + "/n nombre: " + secretaria.getNombre());
+                System.out.println("dni: " + secretaria.getDNI() + "\n nombre: " + secretaria.getNombre());
                 System.out.println("ingrese 1 para confirmar el borrado o 2 para cancelar");
                 opcion = teclado.nextInt();
                 if (opcion == 1) {

@@ -49,7 +49,6 @@ public class Secretaria extends Profesional{
             }
         }
     }
-    //public void cargarTurno(Medico m, Turno t) ::: les puse el mismo nombre ya que hacen lo mismo
     public boolean asignarTurno(Medico m, Turno t){
         int i=0;
         while(i< medicos.size()&&!medicos.get(i).equals(m)){i++;}

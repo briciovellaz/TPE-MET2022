@@ -33,7 +33,7 @@ public abstract class MenuProfesional {
             System.out.println("5-Modificar descripcion Personal");
             System.out.println("6-Modificar email");
             System.out.println("7-Modificar numero de telefono");
-            System.out.println("8-Otras opciones"); //para modificar datos especificos de medico/secretaria/responsable
+            System.out.println("8-Otras opciones "); //para modificar datos especificos de medico/secretaria/responsable
             System.out.println("9-salir");
 
             opcion = sn.nextInt();
@@ -45,35 +45,44 @@ public abstract class MenuProfesional {
                     String nuevoNombre;
                     nuevoNombre = sn.next();
                     p.setNombre(nuevoNombre);
+                    System.out.println("Se ah modificaco el nombre con exito \n");
                     break;
                 }
                 case 2: {
                     System.out.println("2-Modificar contraseña");
                     System.out.println("Ingrese la nueva contraseña");
                     String nuevaContra;
-                    nuevaContra = sn.nextLine();
+                    nuevaContra = sn.next();
                     p.modificarContrasenia(nuevaContra);
+                    System.out.println("Se ah modificaco la contraseña con exito ");
                     break;
                 }
                 case 3: {
                     System.out.println("3-Modificar domicilio");
                     System.out.println("Ingrese el nuevo domicilio");
-                    String nuevoDom = sn.nextLine();
+                    String nuevoDom = sn.next();
                     p.setDomicilio(nuevoDom);
                     break;
                 }
-                case 5: {
+                case 4: {
                     System.out.println("4-Agregar datos al curriculum");
                     System.out.println("Ingrese el nuevo dato del curriculum");
                     String nuevoCur = sn.next();
                     p.setCurriculum(nuevoCur);
                     break;
                 }
-                case 6: {
+                case 5: {
                     System.out.println("5-Modificar descripcion Personal");
                     System.out.println("Ingrese el nuevo dato pertenciente a la inf personal");
-                    String nuevoDatoPer = sn.nextLine();
+                    String nuevoDatoPer = sn.next();
                     p.setDescripcionPersonal(nuevoDatoPer);
+                    break;
+                }
+                case 6:{
+                    System.out.println("6-Modificar email");
+                    System.out.println("Ingrese el nuevo email");
+                    String nuevoEmail = sn.next();
+                    p.setEmail(nuevoEmail);
                     break;
                 }
                 case 7: {
@@ -84,8 +93,8 @@ public abstract class MenuProfesional {
                     break;
                 }
                 case 8: {
-                    System.out.println("Otras opciones"); // corta con el switch y a continuacion generamos otro switch con las opciones (medico)
-
+                    System.out.println("Otras opciones");
+                    otrasOpciones();
                     return true;
 
                 }

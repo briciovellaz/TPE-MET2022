@@ -106,6 +106,8 @@ public class Institucion {
         return pacientes.get(index);
     }
 
+    public Medico getMedico(int index){ return  medicos.get(index);}
+
     public Profesional logIn(String password, int dni, String s) {
         if (s.equals("m"))
             return validatePass(dni, password, this.buscarPosMedico(dni), 1);

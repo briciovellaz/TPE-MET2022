@@ -197,18 +197,16 @@ public class MenuResponsable extends MenuProfesional {
                 institucion.agregar(m);
             }
         }
-
-
     }
-    private void modificarDatosProfesional() {
+    private void modificarDatosProfesional() {  //funciona casi todo
         //preguntar a quien deseo agregar datos, si es secretaria o medico
         //pedir dni
         //confirmar
         //cosas que se pueden modificar en medico: obra social, medios de contacto y mas
         //cosas que se pueden modificar en secretaria: medios de contacto
         //agregar datos nuevos
-        int index=0;
-        boolean cancel=false;
+        int index = 0;
+        boolean cancel = false;
         int DNI;
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;

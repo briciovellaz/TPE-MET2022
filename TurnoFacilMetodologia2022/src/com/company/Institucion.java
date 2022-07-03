@@ -56,8 +56,8 @@ public class Institucion {
     }
 
     public void darDeBajaMedico(int dni) {
-        if (dni < medicos.size()) {
-            int index = buscarPosMedico(dni);
+        int index = buscarPosMedico(dni);
+        if (index < medicos.size()){
             medicos.remove(index);
         }
     }

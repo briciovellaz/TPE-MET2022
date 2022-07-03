@@ -98,7 +98,6 @@ public class MenuResponsable extends MenuProfesional {
 
         if (cancelar) {
             System.out.println("Funcion cancelada");
-            //return; ???
         }else {
             if (opcion == 1) {//dar de baja secretaria
                 //index = institucion.buscarPosSecretaria(DNI); LO SUBI AL DO{}WHILE();
@@ -110,7 +109,6 @@ public class MenuResponsable extends MenuProfesional {
                 if (opcion == 1) {
                     institucion.darDeBajaSecretaria(DNI);
                     System.out.println("Secretaria borrada con exito");
-                    //return; ???
                 }
             } else {
                 if (opcion == 2) {// dar de baja medico
@@ -123,7 +121,6 @@ public class MenuResponsable extends MenuProfesional {
                     if (opcion == 1) {
                         institucion.darDeBajaMedico(DNI);
                         System.out.println("Medico borrado con exito");
-                        //return; ???
                     }
                 }
             }
@@ -145,7 +142,6 @@ public class MenuResponsable extends MenuProfesional {
         } else {
             opcionText = " del medico";
         }
-        System.out.println("ingrese el DNi " + opcionText + " que desea dar de alta");
         boolean cancelar = false;
         /*do {
             System.out.println("ingrese el DNi " + opcionText + " que desea dar de alta o 0 cancelar operacion");
@@ -174,17 +170,17 @@ public class MenuResponsable extends MenuProfesional {
             System.out.println("DNI: ");
             int dni= teclado.nextInt();
             System.out.println("Especialidad:");
-            String especialidad=teclado.nextLine();
+            String especialidad=teclado.next();
             System.out.println("Matricula:");
-            String matricula=teclado.nextLine();
+            String matricula=teclado.next();
             System.out.println("Domicilio:");
-            String domicilio=teclado.nextLine();
+            String domicilio=teclado.next();
             System.out.println("Curriculum:");
-            String curriculum=teclado.nextLine();
+            String curriculum=teclado.next();
             System.out.println("Descripcion:");
-            String descripcion=teclado.nextLine();
+            String descripcion=teclado.next();
             System.out.println("E-mail:");
-            String mail=teclado.nextLine();
+            String mail=teclado.next();
             System.out.println("Numero de Telefono:");
             int nroTel= teclado.nextInt();
 

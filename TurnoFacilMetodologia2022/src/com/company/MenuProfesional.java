@@ -89,7 +89,7 @@ public abstract class MenuProfesional {
                     break;
                 }
                 case 8: {
-                    System.out.println("Otras opciones"); // corta con el switch y a continuacion generamos otro switch con las opciones (menu secretaria/medico/resp)
+                    System.out.println("Otras opciones"); // corta con el switch y a continuacion generamos otro switch con las opciones (medico)
 
                     return true;
 

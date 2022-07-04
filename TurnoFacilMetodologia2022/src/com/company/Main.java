@@ -9,6 +9,14 @@ public class Main {
 	// write your code here
         //creo y completo institucion
         Institucion inst = new Institucion();
+        inicializarIntitucion(inst);
+
+        MenuGeneral menu = new MenuGeneral(inst);
+        menu.IniciarMenu();
+
+    }
+
+    private static void  inicializarIntitucion(Institucion inst){
         Secretaria Esecretaria = new Secretaria("Maria Gimenez ","admin" , 50123123,"---","---","---","---","---","---",-1,inst);
         Responsable EResponsable = new Responsable("Luis Miguel","admin",10101010,"---","---","---","---","---","---",-1,inst);
         inst.agregar(EResponsable);
@@ -52,10 +60,6 @@ public class Main {
         Emedico.agregarHorario(5,LocalTime.of(14,0),LocalTime.of(19,0),20);
         Emedico.agregarHorario(6,LocalTime.of(16,0),LocalTime.of(18,0),30);
         Esecretaria.agregarMedico(Emedico);
-
-
-        MenuGeneral menu = new MenuGeneral(inst);
-        menu.IniciarMenu();
 
     }
 }
